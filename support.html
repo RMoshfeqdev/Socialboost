@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="پشتیبانی کاربران SocialBoost">
+    <meta name="theme-color" content="#080812">
+
+    <title>پشتیبانی | SocialBoost</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .support-page {
+            min-height: calc(100vh - 78px);
+            padding: 50px 0 80px;
+        }
+
+        .support-header {
+            margin-bottom: 30px;
+        }
+
+        .support-header .eyebrow {
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .support-header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+        }
+
+        .support-header h1 span {
+            color: #a78bfa;
+        }
+
+        .support-header p {
+            margin-top: 10px;
+            max-width: 650px;
+            color: #85899a;
+            font-size: 10px;
+            line-height: 2;
+        }
+
+        .support-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .support-card {
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 20px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .support-card h2 {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .support-card-subtitle {
+            margin-bottom: 22px;
+            color: #707484;
+            font-size: 9px;
+            line-height: 1.9;
+        }
+
+        .support-contact {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 14px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 13px;
+            background: rgba(255,255,255,.02);
+        }
+
+        .support-contact-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            color: #c4b5fd;
+            background: rgba(139,92,246,.09);
+            font-size: 18px;
+        }
+
+        .support-contact strong {
+            display: block;
+            color: #ddd;
+            font-size: 10px;
+        }
+
+        .support-contact span {
+            display: block;
+            margin-top: 4px;
+            color: #707484;
+            font-size: 8px;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .support-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 18px;
+            padding: 7px 10px;
+            border-radius: 999px;
+            color: #86efac;
+            background: rgba(74,222,128,.07);
+            font-size: 8px;
+        }
+
+        .support-status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4ade80;
+        }
+
+        .support-form-group {
+            margin-bottom: 16px;
+        }
+
+        .support-form-group label {
+            display: block;
+            margin-bottom: 7px;
+            color: #aaaeba;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .support-form-group input,
+        .support-form-group select,
+        .support-form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 13px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 10px;
+            outline: none;
+            color: #eee;
+            background: rgba(255,255,255,.035);
+            font-family: inherit;
+            font-size: 9px;
+            transition: .2s ease;
+        }
+
+        .support-form-group input:focus,
+        .support-form-group select:focus,
+        .support-form-group textarea:focus {
+            border-color: rgba(139,92,246,.65);
+            box-shadow: 0 0 0 3px rgba(139,92,246,.08);
+        }
+
+        .support-form-group select option {
+            color: #111;
+            background: #fff;
+        }
+
+        .support-form-group textarea {
+            min-height: 145px;
+            resize: vertical;
+            line-height: 1.9;
+        }
+
+        .support-submit {
+            width: 100%;
+            padding: 13px 18px;
+            border: 0;
+            border-radius: 10px;
+            color: #fff;
+            background: linear-gradient(135deg,#8b5cf6,#6d28d9);
+            font-family: inherit;
+            font-size: 9px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform .2s ease, opacity .2s ease;
+        }
+
+        .support-submit:hover {
+            transform: translateY(-1px);
+        }
+
+        .support-submit:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .tickets-section {
+            margin-top: 20px;
+        }
+
+        .tickets-section h2 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .tickets-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .ticket-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 13px;
+            background: rgba(255,255,255,.02);
+        }
+
+        .ticket-info strong {
+            display: block;
+            color: #ddd;
+            font-size: 9px;
+        }
+
+        .ticket-info span {
+            display: block;
+            margin-top: 5px;
+            color: #686c7b;
+            font-size: 7px;
+        }
+
+        .ticket-badge {
+            padding: 6px 9px;
+            border-radius: 999px;
+            color: #fcd34d;
+            background: rgba(250,204,21,.07);
+            font-size: 7px;
+            white-space: nowrap;
+        }
+
+        .ticket-badge.closed {
+            color: #86efac;
+            background: rgba(74,222,128,.07);
+        }
+
+        .no-tickets {
+            padding: 35px 15px;
+            border: 1px dashed rgba(255,255,255,.08);
+            border-radius: 14px;
+            color: #686c7b;
+            text-align: center;
+            font-size: 8px;
+        }
+
+        .faq-section {
+            margin-top: 20px;
+        }
+
+        .faq-section h2 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .faq-item {
+            margin-bottom: 9px;
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,.02);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px;
+            border: 0;
+            color: #ddd;
+            background: transparent;
+            font-family: inherit;
+            font-size: 9px;
+            font-weight: 700;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .faq-question span:last-child {
+            color: #a78bfa;
+            font-size: 16px;
+            transition: transform .2s ease;
+        }
+
+        .faq-item.open .faq-question span:last-child {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 15px 15px;
+            color: #777b8d;
+            font-size: 8px;
+            line-height: 2;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        @media (max-width: 800px) {
+            .support-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .support-page {
+                padding-top: 35px;
+            }
+
+            .support-card {
+                padding: 18px;
+            }
+
+            .ticket-item {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- منوی مشترک سایت -->
+    <header class="header">
+        <div class="container nav">
+
+            <a href="/" class="logo">
+                Social<span>Boost</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="منوی سایت">
+                ☰
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+
+                <a href="/">خانه</a>
+
+                <a href="/services.html">ثبت سفارش جدید</a>
+
+                <a href="/orders.html">سفارش های من</a>
+
+		<a href="/our-services.html">خدمات</a>
+
+                <a href="/dashbord.html">داشبورد</a>
+
+                <a href="/profile.html">پروفایل</a>
+
+                <a href="/wallet.html">کیف پول</a>
+
+                <a href="/transactions.html">تراکنش‌ها</a>
+            </nav>
+
+            <div class="auth-buttons">
+
+                <button
+                    class="register-button"
+                    type="button"
+                    onclick="goDashboard()">
+                    داشبورد
+                </button>
+
+                <button
+                    class="login-button"
+                    type="button"
+                    onclick="logoutUser()">
+                    خروج
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <main class="support-page">
+
+        <div class="container">
+
+            <section class="support-header">
+
+                <span class="eyebrow">
+                    مرکز پشتیبانی
+                </span>
+
+                <h1>
+                    چطور می‌توانیم
+                    <span>کمکتان کنیم؟</span>
+                </h1>
+
+                <p>
+                    اگر درباره سفارش، پرداخت، کیف پول یا هر بخش دیگری از SocialBoost سؤال دارید،
+                    درخواست خود را برای پشتیبانی ارسال کنید.
+                </p>
+
+            </section>
+
+
+            <div class="support-layout">
+
+                <!-- راه‌های ارتباطی -->
+                <section class="support-card">
+
+                    <h2>
+                        راه‌های ارتباطی
+                    </h2>
+
+                    <p class="support-card-subtitle">
+                        تیم پشتیبانی در سریع‌ترین زمان ممکن درخواست شما را بررسی می‌کند.
+                    </p>
+
+                    <div class="support-contact">
+
+                        <div class="support-contact-icon">
+                            💬
+                        </div>
+
+                        <div>
+                            <strong>
+                                پشتیبانی آنلاین
+                            </strong>
+
+                            <span>
+                                هر روز، ۲۴ ساعته
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="support-contact">
+
+                        <div class="support-contact-icon">
+                            📧
+                        </div>
+
+                        <div>
+                            <strong>
+                                ایمیل پشتیبانی
+                            </strong>
+
+                            <span>
+                                support@socialboost.ir
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="support-contact">
+
+                        <div class="support-contact-icon">
+                            🎫
+                        </div>
+
+                        <div>
+                            <strong>
+                                تیکت پشتیبانی
+                            </strong>
+
+                            <span>
+                                پاسخ‌گویی از داخل پنل
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="support-status">
+
+                        <span class="support-status-dot"></span>
+
+                        پشتیبانی فعال است
+
+                    </div>
+
+                </section>
+
+
+                <!-- فرم ارسال تیکت -->
+                <section class="support-card">
+
+                    <h2>
+                        ارسال درخواست
+                    </h2>
+
+                    <p class="support-card-subtitle">
+                        اطلاعات درخواست خود را وارد کنید تا تیم پشتیبانی بررسی کند.
+                    </p>
+
+                    <form id="supportForm">
+
+                        <div class="support-form-group">
+
+                            <label for="ticketSubject">
+                                موضوع درخواست
+                            </label>
+
+                            <input
+                                id="ticketSubject"
+                                type="text"
+                                maxlength="120"
+                                placeholder="مثلاً مشکل در سفارش"
+                                required>
+
+                        </div>
+
+
+                        <div class="support-form-group">
+
+                            <label for="ticketCategory">
+                                دسته‌بندی
+                            </label>
+
+                            <select
+                                id="ticketCategory"
+                                required>
+
+                                <option value="">
+                                    انتخاب دسته‌بندی
+                                </option>
+
+                                <option value="order">
+                                    مشکل سفارش
+                                </option>
+
+                                <option value="payment">
+                                    پرداخت
+                                </option>
+
+                                <option value="wallet">
+                                    کیف پول
+                                </option>
+
+                                <option value="account">
+                                    حساب کاربری
+                                </option>
+
+                                <option value="technical">
+                                    مشکل فنی
+                                </option>
+
+                                <option value="other">
+                                    سایر موارد
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="support-form-group">
+
+                            <label for="ticketMessage">
+                                توضیحات
+                            </label>
+
+                            <textarea
+                                id="ticketMessage"
+                                maxlength="3000"
+                                placeholder="مشکل یا درخواست خود را کامل توضیح دهید..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <button
+                            class="support-submit"
+                            id="supportSubmit"
+                            type="submit">
+
+                            ارسال درخواست
+
+                        </button>
+
+                    </form>
+
+                </section>
+
+            </div>
+
+
+            <!-- درخواست‌های کاربر -->
+            <section class="support-card tickets-section">
+
+                <h2>
+                    درخواست‌های من
+                </h2>
+
+                <div
+                    class="tickets-list"
+                    id="ticketsList">
+
+                    <div class="no-tickets">
+                        در حال دریافت درخواست‌ها...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- سوالات متداول -->
+            <section class="support-card faq-section">
+
+                <h2>
+                    سؤالات متداول
+                </h2>
+
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button">
+
+                        <span>
+                            سفارش من چه زمانی شروع می‌شود؟
+                        </span>
+
+                        <span>
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        زمان شروع و تکمیل سفارش به نوع سرویس انتخاب‌شده بستگی دارد.
+                        وضعیت سفارش از داخل بخش سفارش‌ها قابل مشاهده است.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button">
+
+                        <span>
+                            اگر سفارشم مشکل داشت چه کار کنم؟
+                        </span>
+
+                        <span>
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        شماره سفارش را در درخواست پشتیبانی وارد کنید تا تیم پشتیبانی
+                        بتواند وضعیت آن را بررسی کند.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button">
+
+                        <span>
+                            آیا امکان پیگیری تیکت وجود دارد؟
+                        </span>
+
+                        <span>
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        بله. درخواست‌های ثبت‌شده در بخش «درخواست‌های من» نمایش داده می‌شوند
+                        و وضعیت آن‌ها قابل مشاهده است.
+                    </div>
+
+                </div>
+
+
+                <div class="faq-item">
+
+                    <button
+                        class="faq-question"
+                        type="button">
+
+                        <span>
+                            شارژ کیف پول چگونه انجام می‌شود؟
+                        </span>
+
+                        <span>
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+                        از بخش کیف پول می‌توانید مبلغ موردنظر را انتخاب کنید.
+                        اتصال پرداخت آنلاین پس از فعال‌سازی درگاه پرداخت انجام می‌شود.
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <div
+        id="notification"
+        class="notification"
+        role="alert">
+    </div>
+
+
+    <script>
+
+        function getUser() {
+
+            try {
+
+                const raw =
+                    localStorage.getItem("socialboost_user");
+
+                if (!raw) {
+                    return null;
+                }
+
+                return JSON.parse(raw);
+
+            } catch (error) {
+
+                return null;
+
+            }
+
+        }
+
+
+        function goDashboard() {
+
+            const user = getUser();
+
+            if (!user) {
+
+                window.location.href = "/";
+
+                return;
+
+            }
+
+            window.location.href = "/dashboard.html";
+
+        }
+
+
+        function logoutUser() {
+
+            if (
+                !confirm(
+                    "آیا می‌خواهید از حساب خود خارج شوید؟"
+                )
+            ) {
+
+                return;
+
+            }
+
+            localStorage.removeItem(
+                "socialboost_user"
+            );
+
+            window.location.href = "/";
+
+        }
+
+
+        function showNotification(message) {
+
+            const notification =
+                document.getElementById("notification");
+
+            if (!notification) {
+
+                alert(message);
+
+                return;
+
+            }
+
+            notification.textContent = message;
+
+            notification.classList.add("show");
+
+            setTimeout(() => {
+
+                notification.classList.remove("show");
+
+            }, 3000);
+
+        }
+
+
+        function setupFAQ() {
+
+            document
+                .querySelectorAll(".faq-question")
+                .forEach(button => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            const item =
+                                button.closest(".faq-item");
+
+                            if (!item) {
+                                return;
+                            }
+
+                            item.classList.toggle("open");
+
+                        }
+                    );
+
+                });
+
+        }
+
+
+        function formatDate(value) {
+
+            if (!value) {
+                return "-";
+            }
+
+            const date = new Date(value);
+
+            if (Number.isNaN(date.getTime())) {
+
+                return String(value);
+
+            }
+
+            return date.toLocaleString(
+                "fa-IR",
+                {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function ticketStatusClass(status) {
+
+            const value =
+                String(status || "").toLowerCase();
+
+            if (
+                value === "closed" ||
+                value === "resolved" ||
+                value === "بسته"
+            ) {
+
+                return "closed";
+
+            }
+
+            return "";
+
+        }
+
+
+        function ticketStatusText(status) {
+
+            const value =
+                String(status || "").toLowerCase();
+
+            if (
+                value === "closed" ||
+                value === "resolved" ||
+                value === "بسته"
+            ) {
+
+                return "بسته شده";
+
+            }
+
+            return "در حال بررسی";
+
+        }
+
+
+        async function loadTickets() {
+
+            const user = getUser();
+
+            if (!user) {
+
+                window.location.href = "/";
+
+                return;
+
+            }
+
+            const list =
+                document.getElementById("ticketsList");
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/tickets?userId=" +
+                        encodeURIComponent(user.id)
+                    );
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "خطا در دریافت تیکت‌ها"
+                    );
+
+                }
+
+                const data =
+                    await response.json();
+
+                if (!data.success) {
+
+                    throw new Error(
+                        data.message ||
+                        "تیکت‌ها دریافت نشدند."
+                    );
+
+                }
+
+                const tickets =
+                    Array.isArray(data.tickets)
+                        ? data.tickets
+                        : [];
+
+
+                if (tickets.length === 0) {
+
+                    list.innerHTML = `
+                        <div class="no-tickets">
+                            هنوز هیچ درخواست پشتیبانی ثبت نکرده‌اید.
+                        </div>
+                    `;
+
+                    return;
+
+                }
+
+
+                list.innerHTML =
+                    tickets
+                        .map(ticket => {
+
+                            return `
+                                <div class="ticket-item">
+
+                                    <div class="ticket-info">
+
+                                        <strong>
+                                            ${escapeHTML(
+                                                ticket.subject ||
+                                                "درخواست پشتیبانی"
+                                            )}
+                                        </strong>
+
+                                        <span>
+                                            #${escapeHTML(
+                                                ticket.id ?? "-"
+                                            )}
+                                            ·
+                                            ${escapeHTML(
+                                                formatDate(
+                                                    ticket.created_at ||
+                                                    ticket.createdAt
+                                                )
+                                            )}
+                                        </span>
+
+                                    </div>
+
+                                    <span
+                                        class="ticket-badge ${ticketStatusClass(
+                                            ticket.status
+                                        )}">
+
+                                        ${ticketStatusText(
+                                            ticket.status
+                                        )}
+
+                                    </span>
+
+                                </div>
+                            `;
+
+                        })
+                        .join("");
+
+            } catch (error) {
+
+                console.error(error);
+
+                list.innerHTML = `
+                    <div class="no-tickets">
+                        فعلاً امکان دریافت درخواست‌ها وجود ندارد.
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+        async function submitTicket(event) {
+
+            event.preventDefault();
+
+            const user = getUser();
+
+            if (!user) {
+
+                showNotification(
+                    "ابتدا وارد حساب خود شوید."
+                );
+
+                setTimeout(() => {
+
+                    window.location.href = "/";
+
+                }, 1000);
+
+                return;
+
+            }
+
+
+            const subject =
+                document
+                    .getElementById("ticketSubject")
+                    .value
+                    .trim();
+
+
+            const category =
+                document
+                    .getElementById("ticketCategory")
+                    .value;
+
+
+            const message =
+                document
+                    .getElementById("ticketMessage")
+                    .value
+                    .trim();
+
+
+            if (
+                !subject ||
+                !category ||
+                !message
+            ) {
+
+                showNotification(
+                    "لطفاً تمام اطلاعات درخواست را کامل کنید."
+                );
+
+                return;
+
+            }
+
+
+            const button =
+                document.getElementById(
+                    "supportSubmit"
+                );
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "در حال ارسال...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/tickets",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                userId: user.id,
+                                subject,
+                                category,
+                                message
+                            })
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (
+                    !response.ok ||
+                    !data.success
+                ) {
+
+                    throw new Error(
+                        data.message ||
+                        "ارسال درخواست ناموفق بود."
+                    );
+
+                }
+
+
+                document
+                    .getElementById("supportForm")
+                    .reset();
+
+
+                showNotification(
+                    data.message ||
+                    "درخواست شما با موفقیت ثبت شد."
+                );
+
+
+                await loadTickets();
+
+            } catch (error) {
+
+                console.error(error);
+
+                showNotification(
+                    error.message ||
+                    "خطایی در ارسال درخواست رخ داد."
+                );
+
+            } finally {
+
+                button.disabled = false;
+
+                button.textContent =
+                    "ارسال درخواست";
+
+            }
+
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const user = getUser();
+
+                if (!user) {
+
+                    window.location.href = "/";
+
+                    return;
+
+                }
+
+
+                setupFAQ();
+
+                loadTickets();
+
+
+                document
+                    .getElementById("supportForm")
+                    ?.addEventListener(
+                        "submit",
+                        submitTicket
+                    );
+
+            }
+        );
+
+    </script>
+
+    <!-- منوی مشترک سایت باید آخر صفحه لود شود -->
+    <script src="/menu.js"></script>
+
+</body>
+
+</html>

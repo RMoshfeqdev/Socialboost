@@ -1,0 +1,844 @@
+<script src="/menu.js"></script>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="SocialBoost - پنل حرفه‌ای خدمات شبکه‌های اجتماعی"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080812"
+    >
+
+    <title>
+        SocialBoost | پنل حرفه‌ای شبکه‌های اجتماعی
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="container nav">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            Social<span>Boost</span>
+        </a>
+
+
+        <!-- MOBILE MENU BUTTON -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <nav
+            class="nav-links"
+            id="navLinks"
+        >
+<a href="dashbord.html">
+داشبورد
+</a>
+<a href="services.html">
+ثبت سفارش
+</a>
+<a href="our-services.html">
+خدمات
+</a>
+<a href="wallet.html">
+کیف پول
+</a>
+<a href="transactions.html">
+سفارش‌های‌من
+</a>
+<a href="support.html">
+پشتیبانی
+</a>
+<a href="profile.html">
+پروفایل
+</a>
+ </nav>
+
+
+
+        <!-- AUTH -->
+
+        <div class="auth-buttons">
+
+            <button
+                class="register-button"
+                type="button"
+                onclick="openModal('registerModal')"
+            >
+                ثبت‌نام
+            </button>
+
+
+            <button
+                class="login-button"
+                type="button"
+                onclick="openModal('loginModal')"
+            >
+                ورود
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section
+        class="hero"
+        id="home"
+    >
+
+        <div class="hero-glow glow-one"></div>
+
+        <div class="hero-glow glow-two"></div>
+
+
+        <div class="container hero-layout">
+
+
+            <div class="hero-content">
+
+
+                <div class="badge">
+
+                    <span class="status-dot"></span>
+
+                    پنل حرفه‌ای خدمات شبکه‌های اجتماعی
+
+                </div>
+
+
+                <h1>
+
+                    رشد هوشمندانه
+
+                    <span>
+                        برای برند شما
+                    </span>
+
+                </h1>
+
+
+                <p>
+
+                    خدمات سریع و حرفه‌ای شبکه‌های اجتماعی،
+                    با تجربه‌ای مدرن، ساده و قابل اعتماد.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+
+                    <a
+
+                        مشاهده خدمات
+
+                        <span>
+                            ←
+                        </span>
+
+                    </a>
+
+
+                    <a
+
+                        ثبت سفارش
+
+                    </a>
+
+
+                </div>
+
+
+                <div class="hero-trust">
+
+
+                    <div>
+
+                        <strong>
+                            24/7
+                        </strong>
+
+                        <span>
+                            دسترسی
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            ⚡
+                        </strong>
+
+                        <span>
+                            پردازش سریع
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            🔒
+                        </strong>
+
+                        <span>
+                            امن و مطمئن
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- HERO CARD -->
+
+            <div class="hero-card">
+
+
+                <div class="dashboard-top">
+
+                    <span>
+                        داشبورد سفارش
+                    </span>
+
+                    <span class="online">
+                        ● Online
+                    </span>
+
+                </div>
+
+
+                <div class="dashboard-number">
+                    +10,000
+                </div>
+
+
+                <p>
+                    سفارش‌های ثبت‌شده
+                </p>
+
+
+                <div class="chart">
+
+                    <span style="height:35%"></span>
+
+                    <span style="height:52%"></span>
+
+                    <span style="height:42%"></span>
+
+                    <span style="height:68%"></span>
+
+                    <span style="height:58%"></span>
+
+                    <span style="height:82%"></span>
+
+                    <span style="height:94%"></span>
+
+                </div>
+
+
+                <div class="dashboard-footer">
+
+                    <span>
+                        رشد این ماه
+                    </span>
+
+                    <strong>
+                        +24.8%
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         STATS
+    ================================================== -->
+
+    <section class="stats-section">
+
+        <div class="container stats">
+
+
+            <div class="stat">
+
+                <strong>
+                    +10K
+                </strong>
+
+                <span>
+                    سفارش ثبت‌شده
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    24/7
+                </strong>
+
+                <span>
+                    دسترسی به پنل
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    ⚡ سریع
+                </strong>
+
+                <span>
+                    پردازش سفارش
+                </span>
+
+            </div>
+
+
+            <div class="stat">
+
+                <strong>
+                    99%
+                </strong>
+
+                <span>
+                    رضایت کاربران
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         WHY SOCIALBOOST
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+                <span>
+                    SocialBoost
+                </span>
+
+                <h2>
+
+                    همه‌چیز برای رشد
+
+                    <em>
+                        پیج شما
+                    </em>
+
+                </h2>
+
+                <p>
+
+                    سرویس موردنظر خود را انتخاب کنید،
+                    سفارش دهید و وضعیت آن را از حساب خود پیگیری کنید.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="features-grid">
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        پردازش سریع
+                    </h3>
+
+                    <p>
+                        سفارش خود را در چند مرحله ساده ثبت کنید.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        پیگیری سفارش
+                    </h3>
+
+                    <p>
+                        وضعیت سفارش‌های خود را از حساب کاربری مشاهده کنید.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        🔐
+                    </div>
+
+                    <h3>
+                        حساب کاربری
+                    </h3>
+
+                    <p>
+                        اطلاعات و سفارش‌های خود را در یک حساب مدیریت کنید.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        💳
+                    </div>
+
+                    <h3>
+                        پرداخت آنلاین
+                    </h3>
+
+                    <p>
+                        ساختار سایت برای اتصال به درگاه پرداخت آماده است.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CTA
+    ================================================== -->
+
+    <section class="cta-section">
+
+        <div class="container cta">
+
+
+            <div>
+
+                <span>
+                    آماده‌ای شروع کنی؟
+                </span>
+
+                <h2>
+                    رشد پیجت را از همین امروز شروع کن.
+                </h2>
+
+            </div>
+
+
+            <a
+
+                ثبت سفارش
+
+                <span>
+                    ←
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container footer-content">
+
+
+        <div>
+
+            <div class="footer-logo">
+
+                Social<span>
+                    Boost
+                </span>
+
+            </div>
+
+            <p>
+                پنل حرفه‌ای خدمات شبکه‌های اجتماعی
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                خانه
+            </a>
+
+
+
+            <a href="support.html">
+                پشتیبانی
+            </a>
+
+        </div>
+
+
+        <div>
+
+            © 2026 SocialBoost
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     LOGIN MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="loginModal"
+>
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="modal-close"
+            type="button"
+            onclick="closeModal('loginModal')"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-icon">
+            🔐
+        </div>
+
+
+        <h2>
+            ورود به حساب
+        </h2>
+
+
+        <p class="modal-subtitle">
+
+            برای ادامه وارد حساب خود شوید.
+
+        </p>
+
+
+        <div class="form-group">
+
+            <label for="loginEmail">
+                ایمیل
+            </label>
+
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="example@email.com"
+                autocomplete="email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="loginPassword">
+                رمز عبور
+            </label>
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="رمز عبور"
+                autocomplete="current-password"
+            >
+
+        </div>
+
+
+        <button
+            class="modal-button"
+            type="button"
+            onclick="login()"
+        >
+            ورود
+        </button>
+
+
+        <p class="modal-text">
+
+            حساب ندارید؟
+
+            <button
+                type="button"
+                onclick="switchToRegister()"
+            >
+                ثبت‌نام کنید
+            </button>
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     REGISTER MODAL
+===================================================== -->
+
+<div
+    class="modal"
+    id="registerModal"
+>
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="modal-close"
+            type="button"
+            onclick="closeModal('registerModal')"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-icon">
+            ✨
+        </div>
+
+
+        <h2>
+            ساخت حساب
+        </h2>
+
+
+        <p class="modal-subtitle">
+
+            در چند ثانیه حساب خود را بسازید.
+
+        </p>
+
+
+        <div class="form-group">
+
+            <label for="registerName">
+                نام
+            </label>
+
+            <input
+                id="registerName"
+                type="text"
+                placeholder="نام شما"
+                autocomplete="name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="registerEmail">
+                ایمیل
+            </label>
+
+            <input
+                id="registerEmail"
+                type="email"
+                placeholder="example@email.com"
+                autocomplete="email"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label for="registerPassword">
+                رمز عبور
+            </label>
+
+            <input
+                id="registerPassword"
+                type="password"
+                placeholder="حداقل ۶ کاراکتر"
+                autocomplete="new-password"
+            >
+
+        </div>
+
+
+        <button
+            class="modal-button"
+            type="button"
+            onclick="register()"
+        >
+            ساخت حساب
+        </button>
+
+
+        <p class="modal-text">
+
+            قبلاً حساب ساخته‌اید؟
+
+            <button
+                type="button"
+                onclick="switchToLogin()"
+            >
+                ورود
+            </button>
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     NOTIFICATION
+===================================================== -->
+
+<div
+    id="notification"
+    class="notification"
+    role="alert"
+></div>
+
+
+
+<!-- =====================================================
+     SCRIPT
+===================================================== -->
+
+<script src="/menu.js"></script>
+<script src="/script.js"></script>
+
+</body>
+
+</html>

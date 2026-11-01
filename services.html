@@ -1,0 +1,2166 @@
+<script src="/menu.js"></script>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080812">
+<title>ثبت سفارش | SocialBoost</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+:root{
+    --p:#8b5cf6;
+    --p2:#6d28d9;
+    --bg:#080812;
+    --card:rgba(255,255,255,.045);
+    --bd:rgba(255,255,255,.09);
+    --muted:#85899a;
+}
+
+body{
+    background:
+        radial-gradient(circle at 15% 5%,rgba(139,92,246,.17),transparent 28%),
+        radial-gradient(circle at 85% 20%,rgba(59,130,246,.10),transparent 25%),
+        var(--bg);
+}
+
+.order-page{
+    min-height:calc(100vh - 70px);
+    padding-bottom:90px;
+}
+
+.order-hero{
+    width:100vw;
+    margin:0 0 28px calc(50% - 50vw);
+    overflow:hidden;
+}
+
+.order-hero img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+/* ================= PLATFORM ================= */
+
+.platform-filter{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+    margin-bottom:14px;
+}
+
+.platform-button{
+    min-height:82px;
+    padding:12px 7px;
+    border:1px solid var(--bd);
+    border-radius:17px;
+    background:var(--card);
+    color:#999dac;
+    font-family:inherit;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.platform-button:hover{
+    transform:translateY(-2px);
+    border-color:#8b5cf666;
+    color:#fff;
+}
+
+.platform-button.active{
+    color:#fff;
+    border-color:#8b5cf6aa;
+    background:#8b5cf622;
+    box-shadow:0 10px 35px #8b5cf61c;
+}
+
+.platform-icon{
+    display:block;
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.platform-name{
+    display:block;
+    font-size:10px;
+    font-weight:900;
+}
+
+.platform-en{
+    display:block;
+    margin-top:4px;
+    font-size:7px;
+    color:#626677;
+}
+
+/* ================= CATEGORY ================= */
+
+.category-bar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+    padding:13px;
+    margin-bottom:18px;
+    border:1px solid var(--bd);
+    border-radius:17px;
+    background:rgba(255,255,255,.025);
+}
+
+.category-label{
+    color:#666b7d;
+    font-size:9px;
+    font-weight:900;
+}
+
+.category-button{
+    border:1px solid #ffffff14;
+    border-radius:999px;
+    background:#ffffff09;
+    color:#8f93a3;
+    padding:8px 13px;
+    font-family:inherit;
+    font-size:9px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.category-button:hover{
+    color:#fff;
+    border-color:#8b5cf666;
+}
+
+.category-button.active{
+    color:#fff;
+    border-color:#8b5cf6aa;
+    background:#8b5cf62e;
+}
+
+/* ================= LAYOUT ================= */
+
+.order-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.45fr) minmax(280px,.65fr);
+    gap:18px;
+}
+
+.panel{
+    border:1px solid var(--bd);
+    border-radius:22px;
+    background:rgba(255,255,255,.035);
+    padding:23px;
+    box-shadow:0 20px 70px #0003;
+}
+
+.order-summary{
+    position:sticky;
+    top:18px;
+}
+
+.panel-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.panel-title h2{
+    margin:0;
+    font-size:17px;
+}
+
+.panel-title p{
+    margin:5px 0 0;
+    color:#686c7d;
+    font-size:8px;
+}
+
+.online-badge{
+    color:#86efac;
+    background:#4ade8010;
+    padding:6px 9px;
+    border-radius:999px;
+    font-size:8px;
+}
+
+/* ================= FORM ================= */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.field.full{
+    grid-column:1/-1;
+}
+
+.field label{
+    color:#8d91a2;
+    font-size:9px;
+}
+
+.field input,
+.field select{
+    width:100%;
+    height:48px;
+    border:1px solid var(--bd);
+    border-radius:12px;
+    background:#0003;
+    color:#eee;
+    padding:0 13px;
+    font-family:inherit;
+    font-size:10px;
+    outline:0;
+}
+
+.field input:focus,
+.field select:focus{
+    border-color:#8b5cf6aa;
+}
+
+.field option{
+    background:#11111c;
+    color:#fff;
+}
+
+.search-box{
+    position:relative;
+}
+
+.search-box:before{
+    content:"⌕";
+    position:absolute;
+    right:14px;
+    top:10px;
+    color:#777;
+    font-size:19px;
+    pointer-events:none;
+}
+
+.search-box input{
+    padding-right:42px;
+}
+
+.service-counter{
+    display:flex;
+    justify-content:space-between;
+    margin-top:8px;
+    color:#686c7d;
+    font-size:8px;
+}
+
+.service-counter strong{
+    color:#b7a1ff;
+}
+
+/* ================= INFO ================= */
+
+.service-info{
+    margin-top:17px;
+    padding:15px;
+    border:1px solid #8b5cf622;
+    border-radius:16px;
+    background:#8b5cf609;
+}
+
+.service-info-head{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.service-name{
+    font-size:12px;
+    font-weight:900;
+}
+
+.service-id{
+    color:#666b7c;
+    font-size:8px;
+}
+
+.service-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:12px;
+}
+
+.service-stat{
+    padding:10px 6px;
+    border-radius:10px;
+    background:#fff1;
+    text-align:center;
+}
+
+.service-stat span{
+    display:block;
+    color:#686c7d;
+    font-size:7px;
+}
+
+.service-stat strong{
+    display:block;
+    margin-top:5px;
+    font-size:10px;
+}
+
+.service-stat.refill strong{
+    color:#86efac;
+}
+
+/* ================= BUTTON ================= */
+
+.submit-order{
+    width:100%;
+    height:52px;
+    margin-top:17px;
+    border:0;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--p),var(--p2));
+    color:#fff;
+    font-family:inherit;
+    font-size:11px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.submit-order:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+/* ================= SUMMARY ================= */
+
+.price-box{
+    padding:20px;
+    border:1px solid #8b5cf633;
+    border-radius:17px;
+    text-align:center;
+    background:linear-gradient(145deg,#8b5cf626,#fff1);
+}
+
+.price-box span{
+    display:block;
+    color:#85899a;
+    font-size:8px;
+}
+
+.price-box strong{
+    display:block;
+    margin-top:7px;
+    font-size:26px;
+}
+
+.summary-tips{
+    list-style:none;
+    padding:0;
+    margin:16px 0 0;
+}
+
+.summary-tips li{
+    padding:11px 0;
+    border-bottom:1px solid #fff1;
+    color:#85899a;
+    font-size:8px;
+    line-height:1.8;
+}
+
+.summary-tips b{
+    color:#ddd;
+}
+
+/* ================= NOTIFICATION ================= */
+
+#notification{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    z-index:99999;
+    display:none;
+    max-width:calc(100vw - 40px);
+    padding:13px 17px;
+    border:1px solid var(--bd);
+    border-radius:12px;
+    background:#151522;
+    color:#fff;
+    font-size:10px;
+    box-shadow:0 15px 40px #0006;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:950px){
+
+    .platform-filter{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .order-layout{
+        grid-template-columns:1fr;
+    }
+
+    .order-summary{
+        position:static;
+    }
+}
+
+@media(max-width:720px){
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .field.full{
+        grid-column:auto;
+    }
+
+    .service-stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:480px){
+
+    .order-hero img{
+        height:160px;
+    }
+    .platform-filter{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .panel{
+        padding:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+<header class="header"><div class="container nav"><a href="index.html" class="logo">Social<span>Boost</span></a>
+<button class="menu-toggle" id="menuToggle" type="button">
+☰</button><nav class="nav-links" id="navLinks">
+<a href="index.html">خانه</a>
+<a href="dashbord.html">داشبورد</a>
+<a href="our-services.html">خدمات</a>
+<a href="wallet.html">کیف پول</a>
+<a href="transactions.html">سفارش‌های‌من</a>
+<a href="support.html">پشتیبانی</a>
+<a href="profile.html">پروفایل</a>
+</nav>
+</div></header>
+
+<main class="order-page">
+
+<div class="container">
+
+<section class="order-hero">
+    <img src="/hero-order.png" alt="SocialBoost">
+</section>
+
+
+<!-- ================= PLATFORM BUTTONS ================= -->
+
+<div class="platform-filter" id="platformFilter">
+
+<button type="button" class="platform-button active" data-platform="all">
+    <span class="platform-icon">✦</span>
+    <span class="platform-name">همه</span>
+    <span class="platform-en">All</span>
+</button>
+
+<button type="button" class="platform-button" data-platform="instagram">
+    <span class="platform-icon">◎</span>
+    <span class="platform-name">اینستاگرام</span>
+    <span class="platform-en">Instagram</span>
+</button>
+
+<button type="button" class="platform-button" data-platform="telegram">
+    <span class="platform-icon">➤</span>
+    <span class="platform-name">تلگرام</span>
+    <span class="platform-en">Telegram</span>
+</button>
+
+<button type="button" class="platform-button" data-platform="facebook">
+    <span class="platform-icon">f</span>
+    <span class="platform-name">فیسبوک</span>
+    <span class="platform-en">Facebook</span>
+</button>
+
+<button type="button" class="platform-button" data-platform="twitter">
+    <span class="platform-icon">𝕏</span>
+    <span class="platform-name">X / توییتر</span>
+    <span class="platform-en">Twitter</span>
+</button>
+
+<button type="button" class="platform-button" data-platform="youtube">
+    <span class="platform-icon">▶</span>
+    <span class="platform-name">یوتیوب</span>
+    <span class="platform-en">YouTube</span>
+</button>
+
+<button type="button" class="platform-button" data-platform="spotify">
+    <span class="platform-icon">◉</span>
+    <span class="platform-name">اسپاتیفای</span>
+    <span class="platform-en">Spotify</span>
+</button>
+
+</div>
+
+
+<!-- ================= CATEGORY BUTTONS ================= -->
+
+<div class="category-bar">
+
+<span class="category-label">
+    نوع سرویس:
+</span>
+
+<button type="button" class="category-button active" data-category="all">
+    همه
+</button>
+
+<button type="button" class="category-button" data-category="followers">
+    👤 فالوور
+</button>
+
+<button type="button" class="category-button" data-category="likes">
+    ❤️ لایک
+</button>
+
+<button type="button" class="category-button" data-category="views">
+    👁 بازدید
+</button>
+
+<button type="button" class="category-button" data-category="comments">
+    💬 کامنت
+</button>
+
+<button type="button" class="category-button" data-category="engagement">
+    🔥 تعامل
+</button>
+
+<button type="button" class="category-button" data-category="story">
+    ◉ استوری
+</button>
+
+<button type="button" class="category-button" data-category="other">
+    • سایر
+</button>
+
+</div>
+
+
+<div class="order-layout">
+
+
+<section class="panel">
+
+<div class="panel-title">
+
+<div>
+<h2>انتخاب سرویس</h2>
+<p>سرویس‌های واقعی Provider</p>
+</div>
+
+<span class="online-badge">
+    ● ONLINE
+</span>
+
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="field full">
+
+<label for="serviceSearch">
+    جستجوی سرویس
+</label>
+
+<div class="search-box">
+
+<input
+    id="serviceSearch"
+    type="search"
+    autocomplete="off"
+    placeholder="مثلاً Instagram Followers یا Views..."
+>
+
+</div>
+
+</div>
+
+
+<div class="field full">
+
+<label for="service">
+    سرویس
+</label>
+
+<select id="service">
+<option value="">در حال دریافت سرویس‌ها...</option>
+</select>
+
+<div class="service-counter">
+
+<span>سرویس‌های قابل انتخاب</span>
+
+<strong id="serviceCount">
+    ۰
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="field full">
+
+<label for="platform">
+    پلتفرم انتخاب‌شده
+</label>
+
+<select id="platform">
+
+<option value="all">همه پلتفرم‌ها</option>
+<option value="instagram">Instagram</option>
+<option value="telegram">Telegram</option>
+<option value="facebook">Facebook</option>
+<option value="twitter">X / Twitter</option>
+<option value="youtube">YouTube</option>
+<option value="spotify">Spotify</option>
+
+</select>
+
+</div>
+
+
+<div class="field full">
+
+<label for="link">
+    لینک هدف
+</label>
+
+<input
+    id="link"
+    type="url"
+    autocomplete="url"
+    placeholder="https://..."
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="quantity">
+    تعداد
+</label>
+
+<input
+    id="quantity"
+    type="number"
+    min="10"
+    value="1000"
+>
+
+</div>
+
+
+<div class="field">
+
+<label for="status">
+    وضعیت سرویس
+</label>
+
+<input
+    id="status"
+    value="در حال بررسی..."
+    readonly
+>
+
+</div>
+
+</div>
+
+
+<div id="serviceInfo" class="service-info">
+
+<div class="service-info-head">
+
+<span class="service-name">
+    سرویس را انتخاب کنید
+</span>
+
+<span class="service-id">
+    —
+</span>
+
+</div>
+
+<div class="service-stats">
+
+<div class="service-stat">
+<span>حداقل</span>
+<strong>—</strong>
+</div>
+
+<div class="service-stat">
+<span>حداکثر</span>
+<strong>—</strong>
+</div>
+
+<div class="service-stat">
+<span>قیمت / 1000</span>
+<strong>—</strong>
+</div>
+
+<div class="service-stat refill">
+<span>Refill</span>
+<strong>—</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<button id="submitOrder" class="submit-order" type="button">
+    ثبت سفارش ←
+</button>
+
+</section>
+
+
+<aside class="panel order-summary">
+
+<div class="panel-title">
+
+<div>
+<h2>خلاصه سفارش</h2>
+<p>اطلاعات قبل از ثبت</p>
+</div>
+
+</div>
+
+
+<div class="price-box">
+
+<span>هزینه تقریبی</span>
+
+<strong id="price">
+    ۰ تومان
+</strong>
+
+</div>
+
+
+<ul class="summary-tips">
+
+<li>
+✓ <b>پلتفرم:</b>
+فقط سرویس‌های همان پلتفرم نمایش داده می‌شوند.
+</li>
+
+<li>
+✓ <b>نوع سرویس:</b>
+فالوور، لایک، بازدید، کامنت و سایر جدا می‌شوند.
+</li>
+
+<li>
+✓ <b>جستجو:</b>
+نام سرویس را سریع جستجو کنید.
+</li>
+
+<li>
+✓ <b>محدوده:</b>
+حداقل و حداکثر سفارش رعایت می‌شود.
+</li>
+
+<li>
+✓ <b>Provider:</b>
+سرویس‌ها مستقیماً از API دریافت می‌شوند.
+</li>
+
+</ul>
+
+</aside>
+
+</div>
+</div>
+</main>
+
+
+<div id="notification"></div>
+
+
+<script>
+"use strict";
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let providerServices = [];
+let selectedPlatform = "all";
+let selectedCategory = "all";
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function $(id){
+    return document.getElementById(id);
+}
+
+function escapeHtml(value){
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+function normalize(value){
+    return String(value ?? "")
+        .toLowerCase()
+        .normalize("NFKC")
+        .replace(/[_\-()[\]{}\/\\|:;,]+/g," ")
+        .replace(/\s+/g," ")
+        .trim();
+}
+
+function serviceId(service){
+    return String(
+        service?.service ??
+        service?.id ??
+        ""
+    );
+}
+
+function serviceText(service){
+
+    /*
+     * مهم:
+     * کل اطلاعات سرویس را برای تشخیص پلتفرم
+     * و نوع سرویس بررسی می‌کنیم.
+     */
+    const values = [];
+
+    function collect(value){
+
+        if(value === null || value === undefined){
+            return;
+        }
+
+        if(typeof value === "string" ||
+           typeof value === "number" ||
+           typeof value === "boolean"){
+
+            values.push(String(value));
+            return;
+        }
+
+        if(Array.isArray(value)){
+
+            value.forEach(collect);
+            return;
+        }
+
+        if(typeof value === "object"){
+
+            Object.keys(value).forEach(key => {
+
+                /*
+                 * اطلاعات حساس/غیرمرتبط لازم نیست.
+                 * ولی نام فیلد هم برای تشخیص کمک می‌کند.
+                 */
+                values.push(key);
+                collect(value[key]);
+
+            });
+
+        }
+
+    }
+
+    collect(service);
+
+    return normalize(values.join(" "));
+}
+
+
+/* =========================================================
+   PLATFORM DETECTION
+========================================================= */
+
+const PLATFORM_WORDS = {
+
+    instagram:[
+        "instagram",
+        "insta",
+        "ig",
+        "اینستاگرام",
+        "اینستا"
+    ],
+
+    telegram:[
+        "telegram",
+        "tg",
+        "تلگرام"
+    ],
+
+    facebook:[
+        "facebook",
+        "fb",
+        "فیسبوک",
+        "فیس بوک"
+    ],
+
+    twitter:[
+        "twitter",
+        "x.com",
+        "twitter x",
+        "x twitter",
+        "توییتر"
+    ],
+
+    youtube:[
+        "youtube",
+        "youtube.com",
+        "yt",
+        "یوتیوب"
+    ],
+
+    spotify:[
+        "spotify",
+        "spotify.com",
+        "اسپاتیفای"
+    ]
+
+};
+
+
+function detectPlatform(service){
+
+    const text = serviceText(service);
+
+    for(const platform of Object.keys(PLATFORM_WORDS)){
+
+        const words = PLATFORM_WORDS[platform];
+
+        for(const word of words){
+
+            if(
+                text.includes(
+                    normalize(word)
+                )
+            ){
+
+                return platform;
+
+            }
+
+        }
+
+    }
+
+    return "other";
+}
+
+
+/* =========================================================
+   CATEGORY DETECTION
+========================================================= */
+
+const CATEGORY_WORDS = {
+
+    followers:[
+        "followers",
+        "follower",
+        "follow",
+        "فالوور",
+        "فالور",
+        "فالوئر",
+        "دنبال کننده",
+        "دنبال‌کننده"
+    ],
+
+    likes:[
+        "likes",
+        "like",
+        "لایک"
+    ],
+
+    views:[
+        "views",
+        "view",
+        "بازدید",
+        "ویو"
+    ],
+
+    comments:[
+        "comments",
+        "comment",
+        "کامنت",
+        "نظر",
+        "نظرات"
+    ],
+
+    engagement:[
+        "engagement",
+        "engagement rate",
+        "interaction",
+        "تعامل",
+        "اینگیجمنت"
+    ],
+
+    story:[
+        "story",
+        "stories",
+        "استوری"
+    ]
+
+};
+
+
+function detectCategory(service){
+
+    const text = serviceText(service);
+
+    for(const category of Object.keys(CATEGORY_WORDS)){
+
+        for(const word of CATEGORY_WORDS[category]){
+
+            if(
+                text.includes(
+                    normalize(word)
+                )
+            ){
+
+                return category;
+
+            }
+
+        }
+
+    }
+
+    return "other";
+}
+
+
+/* =========================================================
+   PREPARE
+========================================================= */
+
+function prepareServices(list){
+
+    return list
+        .map(item => {
+
+            const service = {
+                ...item,
+                service:serviceId(item)
+            };
+
+            service.__platform =
+                detectPlatform(service);
+
+            service.__category =
+                detectCategory(service);
+
+            return service;
+
+        })
+        .filter(item => item.service !== "");
+
+}
+
+
+/* =========================================================
+   SELECTED SERVICE
+========================================================= */
+
+function getSelectedService(){
+
+    const value =
+        String($("service")?.value || "");
+
+    if(!value){
+        return null;
+    }
+
+    return providerServices.find(
+        item =>
+            String(item.service) === value
+    ) || null;
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function matchesPlatform(service){
+
+    if(selectedPlatform === "all"){
+        return true;
+    }
+
+    return service.__platform === selectedPlatform;
+}
+
+
+function matchesCategory(service){
+
+    if(selectedCategory === "all"){
+        return true;
+    }
+
+    return service.__category === selectedCategory;
+}
+
+
+function matchesSearch(service){
+
+    const query =
+        normalize(
+            $("serviceSearch")?.value || ""
+        );
+
+    if(!query){
+        return true;
+    }
+
+    const text =
+        serviceText(service);
+
+    return query
+        .split(" ")
+        .filter(Boolean)
+        .every(word => text.includes(word));
+}
+
+
+function getFilteredServices(){
+
+    return providerServices.filter(service => {
+
+        return (
+            matchesPlatform(service) &&
+            matchesCategory(service) &&
+            matchesSearch(service)
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function renderServices(){
+
+    const select = $("service");
+    const counter = $("serviceCount");
+
+    if(!select){
+        return;
+    }
+
+    const previous =
+        String(select.value || "");
+
+    const list =
+        getFilteredServices();
+
+    select.innerHTML = "";
+
+    if(counter){
+
+        counter.textContent =
+            list.length.toLocaleString("fa-IR");
+
+    }
+
+
+    if(list.length === 0){
+
+        const option =
+            document.createElement("option");
+
+        option.value = "";
+
+        option.textContent =
+            "سرویسی با این فیلتر پیدا نشد";
+
+        select.appendChild(option);
+
+        renderServiceInfo();
+
+        return;
+    }
+
+
+    list.forEach(service => {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            String(service.service);
+
+        option.textContent =
+            service.name ||
+            service.description ||
+            `Service ${service.service}`;
+
+        select.appendChild(option);
+
+    });
+
+
+    const exists =
+        list.some(
+            service =>
+                String(service.service) === previous
+        );
+
+
+    if(exists){
+        select.value = previous;
+    }else{
+        select.selectedIndex = 0;
+    }
+
+
+    renderServiceInfo();
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+function renderServiceInfo(){
+
+    const service =
+        getSelectedService();
+
+    const info =
+        $("serviceInfo");
+
+    const status =
+        $("status");
+
+    if(!info){
+        return;
+    }
+
+
+    if(!service){
+
+        if(status){
+            status.value = "انتخاب نشده";
+        }
+
+        info.innerHTML = `
+            <div class="service-info-head">
+                <span class="service-name">
+                    سرویسی پیدا نشد
+                </span>
+                <span class="service-id">—</span>
+            </div>
+
+            <div class="service-stats">
+                <div class="service-stat">
+                    <span>حداقل</span>
+                    <strong>—</strong>
+                </div>
+
+                <div class="service-stat">
+                    <span>حداکثر</span>
+                    <strong>—</strong>
+                </div>
+
+                <div class="service-stat">
+                    <span>قیمت / 1000</span>
+                    <strong>—</strong>
+                </div>
+
+                <div class="service-stat refill">
+                    <span>Refill</span>
+                    <strong>—</strong>
+                </div>
+            </div>
+        `;
+
+        calculatePrice();
+
+        return;
+    }
+
+
+    const min =
+        Number(service.min || 0);
+
+    const max =
+        Number(service.max || 0);
+
+    const rate =
+        Number(service.rate || 0);
+
+    const quantity =
+        $("quantity");
+
+
+    if(quantity){
+
+        if(min > 0){
+            quantity.min = min;
+        }
+
+        if(max > 0){
+            quantity.max = max;
+        }
+
+        let value =
+            Number(quantity.value);
+
+        if(!Number.isFinite(value)){
+            value = min || 10;
+        }
+
+        if(min > 0 && value < min){
+            value = min;
+        }
+
+        if(max > 0 && value > max){
+            value = max;
+        }
+
+        quantity.value = value;
+    }
+
+
+    if(status){
+        status.value = "فعال";
+    }
+
+
+    info.innerHTML = `
+
+        <div class="service-info-head">
+
+            <span class="service-name">
+                ${escapeHtml(
+                    service.name || "سرویس"
+                )}
+            </span>
+
+            <span class="service-id">
+                ID: ${escapeHtml(
+                    service.service
+                )}
+            </span>
+
+        </div>
+
+        <div class="service-stats">
+
+            <div class="service-stat">
+                <span>حداقل</span>
+                <strong>
+                    ${
+                        min
+                        ? min.toLocaleString("fa-IR")
+                        : "—"
+                    }
+                </strong>
+            </div>
+
+            <div class="service-stat">
+                <span>حداکثر</span>
+                <strong>
+                    ${
+                        max
+                        ? max.toLocaleString("fa-IR")
+                        : "—"
+                    }
+                </strong>
+            </div>
+
+            <div class="service-stat">
+                <span>قیمت / 1000</span>
+                <strong>
+                    ${money(rate)}
+                </strong>
+            </div>
+
+            <div class="service-stat refill">
+                <span>Refill</span>
+                <strong>
+                    ${
+                        service.refill
+                        ? "دارد"
+                        : "ندارد"
+                    }
+                </strong>
+            </div>
+
+        </div>
+    `;
+
+
+    calculatePrice();
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+function money(value){
+
+    return (
+        Number(value || 0)
+            .toLocaleString("fa-IR")
+        + " تومان"
+    );
+}
+
+
+function calculatePrice(){
+
+    const service =
+        getSelectedService();
+
+    const quantity =
+        Number(
+            $("quantity")?.value || 0
+        );
+
+    const price =
+        $("price");
+
+    if(!price){
+        return;
+    }
+
+    if(!service || quantity <= 0){
+
+        price.textContent =
+            "۰ تومان";
+
+        return;
+    }
+
+    const rate =
+        Number(service.rate || 0);
+
+    const total =
+        Math.ceil(
+            quantity / 1000 * rate
+        );
+
+    price.textContent =
+        money(total);
+}
+
+
+/* =========================================================
+   PLATFORM BUTTONS
+========================================================= */
+
+function setupPlatformButtons(){
+
+    document
+        .querySelectorAll(".platform-button")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                selectedPlatform =
+                    button.dataset.platform || "all";
+
+                document
+                    .querySelectorAll(".platform-button")
+                    .forEach(item => {
+
+                        item.classList.toggle(
+                            "active",
+                            item === button
+                        );
+
+                    });
+
+
+                const select =
+                    $("platform");
+
+                if(select){
+                    select.value =
+                        selectedPlatform;
+                }
+
+
+                /*
+                 * وقتی پلتفرم عوض می‌شود،
+                 * نوع سرویس دوباره از «همه» شروع می‌شود
+                 * تا فیلتر قبلی باعث خالی شدن لیست نشود.
+                 */
+                selectedCategory = "all";
+
+                document
+                    .querySelectorAll(".category-button")
+                    .forEach(item => {
+
+                        item.classList.toggle(
+                            "active",
+                            item.dataset.category === "all"
+                        );
+
+                    });
+
+
+                renderServices();
+
+            });
+
+        });
+}
+
+
+/* =========================================================
+   CATEGORY BUTTONS
+========================================================= */
+
+function setupCategoryButtons(){
+
+    document
+        .querySelectorAll(".category-button")
+        .forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                selectedCategory =
+                    button.dataset.category || "all";
+
+
+                document
+                    .querySelectorAll(".category-button")
+                    .forEach(item => {
+
+                        item.classList.toggle(
+                            "active",
+                            item === button
+                        );
+
+                    });
+
+
+                renderServices();
+
+            });
+
+        });
+}
+
+
+/* =========================================================
+   PLATFORM SELECT
+========================================================= */
+
+function setupPlatformSelect(){
+
+    const select =
+        $("platform");
+
+    if(!select){
+        return;
+    }
+
+    select.addEventListener("change", () => {
+
+        selectedPlatform =
+            select.value || "all";
+
+
+        document
+            .querySelectorAll(".platform-button")
+            .forEach(button => {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.platform ===
+                    selectedPlatform
+                );
+
+            });
+
+
+        selectedCategory = "all";
+
+        document
+            .querySelectorAll(".category-button")
+            .forEach(button => {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.category === "all"
+                );
+
+            });
+
+
+        renderServices();
+
+    });
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function setupSearch(){
+
+    $("serviceSearch")
+        ?.addEventListener(
+            "input",
+            renderServices
+        );
+}
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+function setupQuantity(){
+
+    const input =
+        $("quantity");
+
+    if(!input){
+        return;
+    }
+
+    input.addEventListener(
+        "input",
+        calculatePrice
+    );
+
+    input.addEventListener(
+        "change",
+        () => {
+
+            const service =
+                getSelectedService();
+
+            if(service){
+
+                const min =
+                    Number(service.min || 0);
+
+                const max =
+                    Number(service.max || 0);
+
+                let value =
+                    Number(input.value);
+
+                if(!Number.isFinite(value)){
+                    value = min || 10;
+                }
+
+                if(min > 0 && value < min){
+                    value = min;
+                }
+
+                if(max > 0 && value > max){
+                    value = max;
+                }
+
+                input.value = value;
+            }
+
+            calculatePrice();
+
+        }
+    );
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+function notify(message){
+
+    const box =
+        $("notification");
+
+    if(!box){
+        alert(message);
+        return;
+    }
+
+    box.textContent =
+        message;
+
+    box.style.display =
+        "block";
+
+    clearTimeout(
+        window.__sbNotify
+    );
+
+    window.__sbNotify =
+        setTimeout(() => {
+
+            box.style.display =
+                "none";
+
+        },3500);
+}
+
+
+/* =========================================================
+   LOAD SERVICES
+========================================================= */
+
+async function loadProviderServices(){
+
+    const select =
+        $("service");
+
+    try{
+
+        const response =
+            await fetch(
+                "/api/provider/services",
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+
+        let data;
+
+        try{
+
+            data =
+                await response.json();
+
+        }catch(error){
+
+            throw new Error(
+                "پاسخ سرور معتبر نیست."
+            );
+
+        }
+
+
+        if(
+            !response.ok
+        ){
+
+            throw new Error(
+                data?.message ||
+                "دریافت سرویس‌ها ناموفق بود."
+            );
+
+        }
+
+
+        if(
+            !data ||
+            data.success !== true ||
+            !Array.isArray(data.services)
+        ){
+
+            throw new Error(
+                data?.message ||
+                "لیست سرویس‌های Provider دریافت نشد."
+            );
+
+        }
+
+
+        providerServices =
+            prepareServices(
+                data.services
+            );
+
+
+        if(
+            providerServices.length === 0
+        ){
+
+            throw new Error(
+                "Provider هیچ سرویس معتبری برنگرداند."
+            );
+
+        }
+
+
+        renderServices();
+
+
+    }catch(error){
+
+        console.error(
+            "SOCIALBOOST SERVICES:",
+            error
+        );
+
+
+        if(select){
+
+            select.innerHTML = "";
+
+            const option =
+                document.createElement("option");
+
+            option.value = "";
+
+            option.textContent =
+                "خطا در دریافت سرویس‌ها";
+
+            select.appendChild(option);
+        }
+
+
+        if($("status")){
+            $("status").value = "خطا";
+        }
+
+
+        notify(
+            error.message ||
+            "دریافت سرویس‌ها با خطا مواجه شد."
+        );
+    }
+}
+
+
+/* =========================================================
+   SUBMIT ORDER
+========================================================= */
+
+async function submitOrder(){
+
+    const service =
+        $("service")?.value || "";
+
+    const link =
+        $("link")?.value.trim() || "";
+
+    const quantity =
+        Number(
+            $("quantity")?.value
+        );
+
+
+    if(!service){
+
+        notify(
+            "لطفاً سرویس را انتخاب کنید."
+        );
+
+        return;
+    }
+
+
+    if(selectedPlatform === "all"){
+
+        notify(
+            "لطفاً ابتدا یک پلتفرم انتخاب کنید."
+        );
+
+        return;
+    }
+
+
+    if(!link){
+
+        notify(
+            "لطفاً لینک هدف را وارد کنید."
+        );
+
+        $("link")?.focus();
+
+        return;
+    }
+
+
+    if(
+        !Number.isInteger(quantity) ||
+        quantity <= 0
+    ){
+
+        notify(
+            "تعداد سفارش نامعتبر است."
+        );
+
+        return;
+    }
+
+
+    const serviceData =
+        getSelectedService();
+
+
+    if(!serviceData){
+
+        notify(
+            "سرویس انتخاب‌شده معتبر نیست."
+        );
+
+        return;
+    }
+
+
+    const min =
+        Number(serviceData.min || 0);
+
+    const max =
+        Number(serviceData.max || 0);
+
+
+    if(
+        min > 0 &&
+        quantity < min
+    ){
+
+        notify(
+            `حداقل سفارش ${min.toLocaleString("fa-IR")} است.`
+        );
+
+        return;
+    }
+
+
+    if(
+        max > 0 &&
+        quantity > max
+    ){
+
+        notify(
+            `حداکثر سفارش ${max.toLocaleString("fa-IR")} است.`
+        );
+
+        return;
+    }
+
+
+    let user = null;
+
+    try{
+
+        user =
+            JSON.parse(
+                localStorage.getItem(
+                    "socialboost_user"
+                ) || "null"
+            );
+
+    }catch{
+
+        user = null;
+
+    }
+
+
+    if(
+        !user ||
+        !user.id
+    ){
+
+        notify(
+            "ابتدا وارد حساب کاربری شوید."
+        );
+
+        return;
+    }
+
+
+    const button =
+        $("submitOrder");
+
+
+    if(button){
+
+        button.disabled = true;
+
+        button.textContent =
+            "در حال ثبت سفارش...";
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                "/api/orders",
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+
+                        userId:user.id,
+
+                        service:service,
+
+                        platform:selectedPlatform,
+
+                        link:link,
+
+                        quantity:quantity
+
+                    })
+                }
+            );
+
+
+        let data;
+
+        try{
+
+            data =
+                await response.json();
+
+        }catch{
+
+            throw new Error(
+                "پاسخ سرور معتبر نیست."
+            );
+
+        }
+
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            throw new Error(
+                data?.message ||
+                "ثبت سفارش ناموفق بود."
+            );
+
+        }
+
+
+        notify(
+            "✓ سفارش با موفقیت ثبت شد."
+        );
+
+
+        setTimeout(() => {
+
+            window.location.href =
+                "orders.html";
+
+        },900);
+
+
+    }catch(error){
+
+        console.error(
+            "SOCIALBOOST ORDER:",
+            error
+        );
+
+
+        notify(
+            error.message ||
+            "ثبت سفارش با خطا مواجه شد."
+        );
+
+
+        if(button){
+
+            button.disabled = false;
+
+            button.textContent =
+                "ثبت سفارش ←";
+
+        }
+
+    }
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+
+/* =========================================================
+   START
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        setupPlatformButtons();
+
+        setupCategoryButtons();
+
+        setupPlatformSelect();
+
+        setupSearch();
+
+        setupQuantity();
+
+
+
+        $("service")
+            ?.addEventListener(
+                "change",
+                renderServiceInfo
+            );
+
+
+        $("submitOrder")
+            ?.addEventListener(
+                "click",
+                submitOrder
+            );
+
+
+        loadProviderServices();
+
+    }
+);
+</script>
+</body>
+</html>

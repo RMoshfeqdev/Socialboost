@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="تراکنش‌های حساب کاربری SocialBoost"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080812"
+    >
+
+    <title>تراکنش‌ها | SocialBoost</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .transactions-page {
+            min-height: calc(100vh - 78px);
+            padding: 55px 0 80px;
+        }
+
+        .transactions-header {
+            margin-bottom: 25px;
+        }
+
+        .transactions-header h1 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .transactions-header p {
+            color: #777b8d;
+            font-size: 10px;
+        }
+
+        .transactions-card {
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 20px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .transactions-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            padding: 20px 23px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.06);
+        }
+
+        .transactions-card-header h2 {
+            font-size: 15px;
+        }
+
+        .transactions-count {
+            color: #777b8d;
+            font-size: 9px;
+        }
+
+        .transactions-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .transactions-table {
+            width: 100%;
+            min-width: 650px;
+            border-collapse: collapse;
+        }
+
+        .transactions-table th {
+            padding: 15px 18px;
+
+            color: #777b8d;
+
+            background: rgba(255,255,255,.02);
+
+            font-size: 9px;
+            font-weight: 800;
+
+            text-align: right;
+
+            white-space: nowrap;
+        }
+
+        .transactions-table td {
+            padding: 16px 18px;
+
+            color: #d5d7df;
+
+            border-top:
+                1px solid rgba(255,255,255,.05);
+
+            font-size: 9px;
+
+            white-space: nowrap;
+        }
+
+        .transaction-id {
+            color: #8b5cf6;
+            font-family: monospace;
+        }
+
+        .transaction-amount {
+            font-weight: 900;
+        }
+
+        .transaction-amount.positive {
+            color: #86efac;
+        }
+
+        .transaction-amount.negative {
+            color: #fb7185;
+        }
+
+        .transaction-status {
+            display: inline-flex;
+            align-items: center;
+
+            min-height: 26px;
+
+            padding: 4px 9px;
+
+            border-radius: 7px;
+
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+        .transaction-status.success {
+            color: #86efac;
+            background: rgba(74,222,128,.08);
+        }
+
+        .transaction-status.pending {
+            color: #fcd34d;
+            background: rgba(250,204,21,.08);
+        }
+
+        .transaction-status.failed {
+            color: #fb7185;
+            background: rgba(251,113,133,.08);
+        }
+
+        .empty-transactions {
+            padding: 60px 20px;
+
+            color: #777b8d;
+
+            text-align: center;
+        }
+
+        .empty-transactions-icon {
+            margin-bottom: 12px;
+            font-size: 35px;
+        }
+
+        .empty-transactions h3 {
+            margin-bottom: 7px;
+
+            color: #d5d7df;
+
+            font-size: 13px;
+        }
+
+        .empty-transactions p {
+            font-size: 9px;
+        }
+
+        .transactions-loading {
+            padding: 50px 20px;
+
+            color: #777b8d;
+
+            text-align: center;
+
+            font-size: 10px;
+        }
+
+        @media (max-width: 800px) {
+
+            .transactions-page {
+                padding-top: 40px;
+            }
+
+            .transactions-header h1 {
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="container nav">
+
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+            Social<span>Boost</span>
+        </a>
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <nav
+            class="nav-links"
+            id="navLinks"
+        >
+
+            <a href="index.html">
+                خانه
+            </a>
+
+            <a href="dashbord.html">
+                داشبورد
+            </a>
+
+            <a href="services.html">
+                ثبت سفارش
+            </a>
+
+            <a href="our-services.html">
+                خدمات
+            </a>
+
+            <a href="wallet.html">
+                کیف پول
+            </a>
+
+            <a href="support.html">
+                پشتیبانی
+            </a>
+
+            <a href="profile.html">
+                پروفایل
+            </a>
+
+        </nav>
+
+
+        <div class="auth-buttons">
+
+            <button
+                class="register-button"
+                type="button"
+                onclick="goDashboard()"
+            >
+                داشبورد
+            </button>
+
+            <button
+                class="login-button"
+                type="button"
+                onclick="logoutUser()"
+            >
+                خروج
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="transactions-page">
+
+    <div class="container">
+
+
+        <div class="transactions-header">
+
+            <h1>
+                تراکنش‌های حساب
+            </h1>
+
+            <p>
+                تاریخچه پرداخت‌ها و تراکنش‌های مالی حساب خود را مشاهده کنید.
+            </p>
+
+        </div>
+
+
+        <section class="transactions-card">
+
+
+            <div class="transactions-card-header">
+
+                <h2>
+                    تاریخچه تراکنش‌ها
+                </h2>
+
+                <span
+                    class="transactions-count"
+                    id="transactionsCount"
+                >
+                    -
+                </span>
+
+            </div>
+
+
+            <div
+                class="transactions-table-wrapper"
+                id="transactionsContainer"
+            >
+
+                <div class="transactions-loading">
+                    در حال دریافت تراکنش‌ها...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     NOTIFICATION
+===================================================== -->
+
+<div
+    id="notification"
+    class="notification"
+    role="alert"
+></div>
+
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+
+
+
+<script>
+
+function getUser() {
+
+    try {
+
+        const raw =
+            localStorage.getItem(
+                "socialboost_user"
+            );
+
+        if (!raw) {
+            return null;
+        }
+
+        return JSON.parse(raw);
+
+    } catch (error) {
+
+        return null;
+
+    }
+
+}
+
+
+function goDashboard() {
+
+    window.location.href =
+        "/dashboard.html";
+
+}
+
+
+function logoutUser() {
+
+    const confirmed =
+        window.confirm(
+            "آیا می‌خواهید از حساب خود خارج شوید؟"
+        );
+
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem(
+        "socialboost_user"
+    );
+
+    window.location.href =
+        "/";
+
+}
+
+
+function showNotification(message) {
+
+    const notification =
+        document.getElementById(
+            "notification"
+        );
+
+    if (!notification) {
+        return;
+    }
+
+    notification.textContent =
+        message;
+
+    notification.classList.add(
+        "show"
+    );
+
+    setTimeout(
+        () => {
+
+            notification.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
+}
+
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function formatAmount(amount) {
+
+    const number =
+        Number(amount);
+
+    if (!Number.isFinite(number)) {
+        return "-";
+    }
+
+    return number.toLocaleString(
+        "fa-IR"
+    );
+
+}
+
+
+function formatDate(date) {
+
+    if (!date) {
+        return "-";
+    }
+
+    const parsed =
+        new Date(date);
+
+    if (Number.isNaN(
+        parsed.getTime()
+    )) {
+        return escapeHtml(date);
+    }
+
+    return parsed.toLocaleString(
+        "fa-IR"
+    );
+
+}
+
+
+function getTransactionStatus(transaction) {
+
+    const status =
+        String(
+            transaction.status ||
+            transaction.state ||
+            ""
+        ).toLowerCase();
+
+    if (
+        status === "success" ||
+        status === "completed" ||
+        status === "paid" ||
+        status === "successful"
+    ) {
+
+        return {
+            text: "موفق",
+            className: "success"
+        };
+
+    }
+
+    if (
+        status === "pending" ||
+        status === "processing" ||
+        status === "waiting"
+    ) {
+
+        return {
+            text: "در انتظار",
+            className: "pending"
+        };
+
+    }
+
+    if (
+        status === "failed" ||
+        status === "cancelled" ||
+        status === "canceled"
+    ) {
+
+        return {
+            text: "ناموفق",
+            className: "failed"
+        };
+
+    }
+
+    return {
+        text:
+            transaction.status ||
+            "نامشخص",
+
+        className:
+            "pending"
+    };
+
+}
+
+
+function renderTransactions(
+    transactions
+) {
+
+    const container =
+        document.getElementById(
+            "transactionsContainer"
+        );
+
+    const count =
+        document.getElementById(
+            "transactionsCount"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    if (!Array.isArray(
+        transactions
+    )) {
+
+        transactions = [];
+
+    }
+
+
+    if (count) {
+
+        count.textContent =
+            `${transactions.length.toLocaleString("fa-IR")} تراکنش`;
+
+    }
+
+
+    if (transactions.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-transactions">
+
+                <div class="empty-transactions-icon">
+                    💳
+                </div>
+
+                <h3>
+                    هنوز تراکنشی ثبت نشده است
+                </h3>
+
+                <p>
+                    تراکنش‌های حساب شما پس از ثبت در این قسمت نمایش داده می‌شوند.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    let rows = "";
+
+
+    transactions.forEach(
+        (transaction, index) => {
+
+            const id =
+                transaction.id ??
+                transaction.transactionId ??
+                transaction._id ??
+                index + 1;
+
+
+            const type =
+                transaction.type ||
+                transaction.description ||
+                "تراکنش";
+
+
+            const amount =
+                transaction.amount ??
+                transaction.value ??
+                0;
+
+
+            const status =
+                getTransactionStatus(
+                    transaction
+                );
+
+
+            const date =
+                transaction.createdAt ||
+                transaction.created_at ||
+                transaction.date ||
+                transaction.created ||
+                "";
+
+
+            const numericAmount =
+                Number(amount);
+
+
+            const amountClass =
+                Number.isFinite(
+                    numericAmount
+                ) &&
+                numericAmount >= 0
+                    ? "positive"
+                    : "negative";
+
+
+            const sign =
+                Number.isFinite(
+                    numericAmount
+                ) &&
+                numericAmount >= 0
+                    ? "+"
+                    : "";
+
+
+            rows += `
+
+                <tr>
+
+                    <td>
+                        <span class="transaction-id">
+                            #${escapeHtml(id)}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(type)}
+                    </td>
+
+                    <td>
+                        <span class="transaction-amount ${amountClass}">
+                            ${sign}${formatAmount(amount)}
+                        </span>
+                    </td>
+
+                    <td>
+                        <span class="transaction-status ${status.className}">
+                            ${escapeHtml(status.text)}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${formatDate(date)}
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+    );
+
+
+    container.innerHTML = `
+
+        <table class="transactions-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        شناسه
+                    </th>
+
+                    <th>
+                        نوع تراکنش
+                    </th>
+
+                    <th>
+                        مبلغ
+                    </th>
+
+                    <th>
+                        وضعیت
+                    </th>
+
+                    <th>
+                        تاریخ
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                ${rows}
+
+            </tbody>
+
+        </table>
+
+    `;
+
+}
+
+
+async function loadTransactions() {
+
+    const user =
+        getUser();
+
+
+    if (!user) {
+
+        window.location.href =
+            "/";
+
+        return;
+
+    }
+
+
+    try {
+
+            await fetch(
+        "/api/transactions",
+        {
+            method: "GET",
+            headers: {
+                "Content-Type":
+                    "application/json"
+            }
+        }
+    );
+const response =
+    await fetch(
+        `/api/transactions?userId=${encodeURIComponent(user.id)}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type":
+                    "application/json"
+            }
+        }
+    );
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "دریافت تراکنش‌ها انجام نشد."
+            );
+
+        }
+
+
+        const transactions =
+            Array.isArray(
+                data
+            )
+                ? data
+                : (
+                    data.transactions ||
+                    []
+                );
+
+
+        renderTransactions(
+            transactions
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "TRANSACTIONS ERROR:",
+            error
+        );
+
+
+        const container =
+            document.getElementById(
+                "transactionsContainer"
+            );
+
+
+        if (container) {
+
+            container.innerHTML = `
+
+                <div class="empty-transactions">
+
+                    <div class="empty-transactions-icon">
+                        ⚠️
+                    </div>
+
+                    <h3>
+                        دریافت تراکنش‌ها ناموفق بود
+                    </h3>
+
+                    <p>
+                        ${escapeHtml(
+                            error.message ||
+                            "خطایی در دریافت اطلاعات رخ داد."
+                        )}
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadTransactions();
+
+    }
+);
+
+</script>
+<script src="/script.js"></script>
+</body>
+
+</html>

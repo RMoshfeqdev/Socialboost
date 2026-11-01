@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="خدمات SocialBoost برای رشد و افزایش حضور شما در شبکه‌های اجتماعی">
+
+<title>خدمات | SocialBoost</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.services-intro{
+    min-height:calc(100vh - 80px);
+    padding:80px 0 100px;
+}
+
+.services-header{
+    max-width:760px;
+    margin:0 auto 55px;
+    text-align:center;
+}
+
+.services-badge{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid rgba(139,92,246,.25);
+    border-radius:999px;
+    color:#a78bfa;
+    background:rgba(139,92,246,.08);
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.services-header h1{
+    margin:0;
+    font-size:clamp(35px,6vw,58px);
+    line-height:1.3;
+}
+
+.services-header h1 span{
+    color:#a78bfa;
+}
+
+.services-header p{
+    margin-top:20px;
+    color:#9296a8;
+    line-height:2.1;
+    font-size:15px;
+}
+
+.services-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    max-width:1050px;
+    margin:auto;
+}
+
+.service-card{
+    position:relative;
+    padding:32px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    background:rgba(255,255,255,.025);
+    transition:.25s ease;
+    overflow:hidden;
+}
+
+.service-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(167,139,250,.35);
+    background:rgba(255,255,255,.04);
+}
+
+.service-number{
+    position:absolute;
+    top:20px;
+    left:25px;
+    color:rgba(167,139,250,.25);
+    font-size:28px;
+    font-weight:900;
+}
+
+.service-icon{
+    width:58px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:17px;
+    background:rgba(139,92,246,.1);
+    font-size:27px;
+    margin-bottom:22px;
+}
+
+.service-card h2{
+    margin:0 0 12px;
+    font-size:21px;
+}
+
+.service-card p{
+    margin:0;
+    color:#85899a;
+    line-height:2;
+    font-size:13px;
+}
+
+.services-bottom{
+    max-width:1050px;
+    margin:45px auto 0;
+    padding:35px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    background:linear-gradient(
+        135deg,
+        rgba(139,92,246,.09),
+        rgba(255,255,255,.02)
+    );
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.services-bottom h2{
+    margin:0 0 8px;
+}
+
+.services-bottom p{
+    margin:0;
+    color:#85899a;
+    font-size:13px;
+}
+
+.order-button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 25px;
+    border-radius:12px;
+    color:#fff;
+    background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+    text-decoration:none;
+    white-space:nowrap;
+    font-weight:800;
+}
+
+@media(max-width:700px){
+
+    .services-intro{
+        padding:55px 0 70px;
+    }
+
+    .services-list{
+        grid-template-columns:1fr;
+    }
+
+    .service-card{
+        padding:25px;
+    }
+
+    .services-bottom{
+        flex-direction:column;
+        align-items:stretch;
+        text-align:center;
+    }
+
+    .order-button{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a class="logo" href="index.html">
+    <div class="logo-icon">
+        <span>✦</span>
+    </div>
+    <span>SocialBoost</span>
+</a>
+
+<button
+    class="menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-label="منوی سایت"
+>
+    ☰
+</button>
+
+<nav class="nav-links" id="navLinks">
+ <a href="index.html">
+خانه
+</a>
+<a href="dashbord.html">
+داشبورد
+</a>
+<a href="services.html">
+ثبت سفارش
+</a>
+<a href="wallet.html">
+کیف پول
+</a>
+<a href="transactions.html">
+تراکنش‌ها
+</a>
+<a href="orders.html">
+سفارش‌های‌من
+</a>
+<a href="support.html">
+پشتیبانی
+</a>
+<a href="profile.html">
+پروفایل
+</a>
+</nav>
+</div>
+
+</header>
+
+
+<main class="services-intro">
+
+<div class="container">
+
+<section class="services-header">
+
+<div class="services-badge">
+خدمات SocialBoost
+</div>
+
+<h1>
+خدماتی برای
+<span>رشد بهتر</span>
+</h1>
+
+<p>
+در SocialBoost مجموعه‌ای از خدمات شبکه‌های اجتماعی
+را برای افزایش حضور، تعامل و رشد صفحات شما فراهم کرده‌ایم.
+سرویس موردنظر خود را انتخاب کنید و سفارش خود را ثبت کنید.
+</p>
+
+</section>
+
+
+<section class="services-list">
+
+
+<article class="service-card">
+
+<div class="service-number">01</div>
+
+<div class="service-icon">👥</div>
+
+<h2>افزایش فالوور</h2>
+
+<p>
+افزایش تعداد فالوورهای پیج برای تقویت حضور اجتماعی
+و ایجاد ظاهر حرفه‌ای‌تر برای صفحه شما.
+</p>
+
+</article>
+
+
+<article class="service-card">
+
+<div class="service-number">02</div>
+
+<div class="service-icon">❤️</div>
+
+<h2>افزایش لایک</h2>
+
+<p>
+افزایش تعامل پست‌ها با استفاده از سرویس‌های لایک
+برای کمک به دیده‌شدن بهتر محتوای شما.
+</p>
+
+</article>
+
+
+<article class="service-card">
+
+<div class="service-number">03</div>
+
+<div class="service-icon">👁️</div>
+
+<h2>افزایش بازدید</h2>
+
+<p>
+افزایش بازدید محتوای شما در شبکه‌های اجتماعی
+برای ایجاد تعامل بیشتر و نمایش گسترده‌تر محتوا.
+</p>
+
+</article>
+
+
+<article class="service-card">
+
+<div class="service-number">04</div>
+
+<div class="service-icon">💬</div>
+
+<h2>افزایش تعامل</h2>
+
+<p>
+خدمات مرتبط با تعامل برای کمک به افزایش فعالیت
+و جذابیت بیشتر صفحه و محتوای شما.
+</p>
+
+</article>
+
+
+<article class="service-card">
+
+<div class="service-number">05</div>
+
+<div class="service-icon">📣</div>
+
+<h2>خدمات شبکه‌های اجتماعی</h2>
+
+<p>
+سرویس‌های مختلف برای پلتفرم‌های اجتماعی مانند
+Instagram، Telegram، YouTube و TikTok.
+</p>
+
+</article>
+
+
+<article class="service-card">
+
+<div class="service-number">06</div>
+
+<div class="service-icon">⚡</div>
+
+<h2>تحویل سریع</h2>
+
+<p>
+سفارش‌ها از طریق سیستم خودکار پردازش می‌شوند
+و وضعیت سفارش از طریق پنل قابل پیگیری است.
+</p>
+
+</article>
+
+
+</section>
+
+
+<div class="services-bottom">
+
+<div>
+
+<h2>آماده شروع هستید؟</h2>
+
+<p>
+سرویس موردنظر خود را انتخاب کنید و سفارش خود را ثبت کنید.
+</p>
+
+</div>
+
+<a
+    class="order-button"
+    href="services.html">
+          ثبت سفارش ←
+</a>
+
+</div>
+
+</div>
+
+</main>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const button =
+        document.getElementById("menuToggle");
+
+    const nav =
+        document.getElementById("navLinks");
+
+    if(button && nav){
+
+        button.addEventListener("click", function(){
+
+            nav.classList.toggle("mobile-open");
+
+        });
+
+    }
+
+});
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<script src="/menu.js"></script>
+<!DOCTYPE html>
+ <html lang="fa" dir="rtl"> 
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+ <meta name="description" content="پروفایل کاربری SocialBoost" > <meta name="theme-color" content="#080812" >
+ <title>پروفایل | SocialBoost</title> 
+<link rel="stylesheet" href="style.css" > <style> .profile-page { min-height: calc(100vh - 78px); padding: 55px 0 80px; } .profile-layout { display: grid; grid-template-columns: 280px 1fr; gap: 18px; } .profile-sidebar, .profile-card { border: 1px solid rgba(255,255,255,.08); border-radius: 20px; background: rgba(255,255,255,.025); } .profile-sidebar { padding: 25px; height: fit-content; } .profile-avatar { width: 78px; height: 78px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; border-radius: 22px; color: #fff; background: linear-gradient( 135deg, #8b5cf6, #6d28d9 ); font-size: 28px; font-weight: 900; box-shadow: 0 15px 40px rgba(124,58,237,.2); } .profile-sidebar h1 { font-size: 20px; } .profile-email { margin-top: 5px; color: #777b8d; font-size: 9px; word-break: break-word; } .profile-menu { display: grid; gap: 7px; margin-top: 25px; } .profile-menu a { width: 100%; min-height: 43px; display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid transparent; border-radius: 10px; color: #8d91a1; background: transparent; font-family: inherit; font-size: 9px; font-weight: 800; text-align: right; text-decoration: none; cursor: pointer; transition: .2s ease; } .profile-menu a:hover, .profile-menu a.active { color: #fff; border-color: rgba(139,92,246,.2); background: rgba(139,92,246,.08); } .profile-content { display: grid; gap: 18px; } .profile-card-header { padding: 21px 23px; border-bottom: 1px solid rgba(255,255,255,.06); } .profile-card-header h2 { font-size: 16px; } .profile-card-header p { margin-top: 5px; color: #777b8d; font-size: 9px; } .profile-form { padding: 23px; } .profile-form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; } .profile-field { display: grid; gap: 7px; } .profile-field.full { grid-column: 1 / -1; } .profile-field label { color: #85899a; font-size: 9px; font-weight: 800; } .profile-field input { width: 100%; min-height: 45px; padding: 10px 13px; border: 1px solid rgba(255,255,255,.08); border-radius: 10px; outline: none; color: #eee; background: rgba(255,255,255,.035); font-family: inherit; font-size: 10px; transition: .2s ease; box-sizing: border-box; } .profile-field input:focus { border-color: rgba(139,92,246,.55); box-shadow: 0 0 0 3px rgba(139,92,246,.08); } .profile-field input:disabled { color: #777b8d; cursor: not-allowed; opacity: .75; } .profile-actions { display: flex; justify-content: flex-start; gap: 9px; margin-top: 20px; } .profile-button { min-height: 43px; padding: 8px 18px; border: 0; border-radius: 10px; color: #fff; background: linear-gradient( 135deg, #8b5cf6, #6d28d9 ); font-family: inherit; font-size: 9px; font-weight: 900; cursor: pointer; transition: .2s ease; } .profile-button:hover { transform: translateY(-2px); } .profile-button:disabled { opacity: .55; cursor: wait; transform: none; } .profile-danger { padding: 23px; } .profile-danger-content { display: flex; align-items: center; justify-content: space-between; gap: 20px; } .profile-danger h3 { font-size: 12px; } .profile-danger p { margin-top: 5px; color: #777b8d; font-size: 8px; } .logout-button { min-height: 40px; padding: 8px 15px; border: 1px solid rgba(251,113,133,.18); border-radius: 10px; color: #fb7185; background: rgba(251,113,133,.06); font-family: inherit; font-size: 9px; font-weight: 900; cursor: pointer; } .profile-message { display: none; margin-bottom: 15px; padding: 11px 13px; border-radius: 9px; color: #86efac; background: rgba(74,222,128,.08); font-size: 9px; } .profile-message.show { display: block; } @media (max-width: 800px) { .profile-layout { grid-template-columns: 1fr; } .profile-sidebar { display: grid; grid-template-columns: auto 1fr; column-gap: 15px; } .profile-avatar { grid-row: 1 / 3; margin-bottom: 0; } .profile-menu { grid-column: 1 / -1; } } @media (max-width: 600px) { .profile-page { padding-top: 40px; } .profile-form-grid { grid-template-columns: 1fr; } .profile-field.full { grid-column: auto; } .profile-danger-content { align-items: flex-start; flex-direction: column; } .logout-button { width: 100%; } } </style>
+ </head> 
+<body>
+ <!-- ===================================================== HEADER ===================================================== --> <header class="header"> 
+<div class="container nav"> <!-- LOGO --> <a href="index.html" class="logo" > Social<span>Boost</span> 
+</a> 
+<!-- MOBILE MENU --> <button class="menu-toggle" id="menuToggle" type="button" aria-label="باز کردن منو" aria-expanded="false" >
+☰ 
+</button> 
+<!-- MAIN NAVIGATION --> 
+<nav class="nav-links" id="navLinks" >
+ <a href="index.html"> خانه </a>
+ <a href="orders.html"> سفارش‌های من </a> <a href="dashboard.html"> داشبورد </a> 
+<a href="services.html"> ثبت سفارش </a> 
+<a href="our-services.html"> خدمات </a>
+ <a href="wallet.html"> کیف پول </a>
+ <a href="transactions.html"> تراکنش‌ها </a> <a href="support.html"> پشتیبانی </a> 
+<a href="profile.html" class="active" > پروفایل </a>
+ </nav> 
+<!-- AUTH BUTTONS --> 
+<div class="auth-buttons"> 
+<button class="register-button" type="button" onclick="goDashboard()" > داشبورد </button> 
+<button class="login-button" type="button" onclick="logoutUser()" > خروج </button>
+ </div> 
+</div> 
+</header> 
+<!-- ===================================================== MAIN ===================================================== --> 
+<main class="profile-page"> 
+<div class="container">
+ <div class="profile-layout">
+ <!-- SIDEBAR --> <aside class="profile-sidebar"> 
+<div class="profile-avatar" id="profileAvatar" >
+ 👤 
+</div>
+ <div>
+ <h1 id="profileName"> کاربر </h1>
+ <div class="profile-email" id="profileEmail" > - </div> 
+</div> 
+<nav class="profile-menu"> 
+<a href="dashboard.html"> 📊 داشبورد </a> <a href="orders.html"> 📦 سفارش‌های من </a>
+ <a href="profile.html" class="active" > 👤 اطلاعات حساب </a> 
+<a href="wallet.html"> 💳 کیف پول </a>
+<a href="transactions.html"> 📈 تراکنش‌ها </a> 
+<a href="support.html"> 🎧 پشتیبانی </a>
+ </nav>
+ </aside> 
+<!-- CONTENT --> 
+<section class="profile-content">
+ <!-- ACCOUNT --> 
+<div class="profile-card"> 
+<div class="profile-card-header">
+ <h2> اطلاعات حساب </h2>
+ <p> اطلاعات حساب کاربری خود را مدیریت کنید. </p> 
+</div>
+ <form class="profile-form" id="profileForm" >
+ <div class="profile-message" id="profileMessage" >
+</div> 
+<div class="profile-form-grid"> 
+<div class="profile-field">
+ <label for="name"> نام </label>
+ <input id="name" type="text" autocomplete="name" placeholder="نام شما" required > 
+</div> 
+<div class="profile-field">
+ <label for="email"> ایمیل </label>
+ <input id="email" type="email" autocomplete="email" disabled > 
+</div>
+ <div class="profile-field full"> 
+<label for="newPassword"> رمز عبور جدید </label> 
+<input id="newPassword" type="password" minlength="6" autocomplete="new-password" placeholder="اگر نمی‌خواهید تغییر کند خالی بگذارید" > 
+</div> 
+</div> 
+<div class="profile-actions"> 
+<button class="profile-button" id="saveButton" type="submit" > ذخیره تغییرات </button> 
+</div> 
+</form>
+ </div> 
+<!-- SECURITY --> 
+<div class="profile-card"> 
+<div class="profile-card-header">
+ <h2> امنیت حساب </h2> 
+<p> برای حفظ امنیت حساب خود رمز عبور قوی انتخاب کنید. </p> 
+</div> 
+<div class="profile-form">
+ <div class="profile-form-grid">
+ <div class="profile-field"> 
+<label> وضعیت حساب </label> 
+<input type="text" value="فعال" disabled > 
+</div>
+ <div class="profile-field"> 
+<label> ورود فعلی </label> 
+<input type="text" value="مجاز" disabled > 
+</div>
+ </div>
+ </div> 
+</div> 
+<!-- LOGOUT -->
+ <div class="profile-card"> 
+<div class="profile-danger">
+ <div class="profile-danger-content">
+ <div> <h3> خروج از حساب </h3> 
+<p> با خروج، حساب شما از این دستگاه خارج می‌شود. </p> 
+</div> 
+<button class="logout-button" type="button" onclick="logoutUser()" > خروج از حساب </button>
+ </div>
+ </div> 
+</div> 
+</section>
+ </div> 
+</div> 
+</main>
+ <!-- NOTIFICATION -->
+ <div id="notification" class="notification" role="alert" >
+</div> 
+<!-- ===================================================== PROFILE SCRIPT ===================================================== --> 
+<script> function getUser() { try { const raw = localStorage.getItem( "socialboost_user" ); if (!raw) { return null; } return JSON.parse(raw); } catch (error) { console.error( "خطا در خواندن کاربر:", error ); return null; } } function showMessage( message, success = true ) { const box = document.getElementById( "profileMessage" ); if (!box) { return; } box.textContent = message; box.style.color = success ? "#86efac" : "#fb7185"; box.style.background = success ? "rgba(74,222,128,.08)" : "rgba(251,113,133,.08)"; box.classList.add("show"); setTimeout( () => { box.classList.remove("show"); }, 3500 ); } function showNotification(message) { const notification = document.getElementById( "notification" ); if (!notification) { return; } notification.textContent = message; notification.classList.add("show"); setTimeout( () => { notification.classList.remove("show"); }, 3000 ); } function goDashboard() { window.location.href = "/dashboard.html"; } function logoutUser() { const confirmed = window.confirm( "آیا می‌خواهید از حساب خود خارج شوید؟" ); if (!confirmed) { return; } localStorage.removeItem( "socialboost_user" ); window.location.href = "/"; } function loadProfile() { const user = getUser(); if (!user) { window.location.href = "/"; return; } const name = user.name || "کاربر"; const email = user.email || ""; const profileName = document.getElementById( "profileName" ); const profileEmail = document.getElementById( "profileEmail" ); const nameInput = document.getElementById( "name" ); const emailInput = document.getElementById( "email" ); const avatar = document.getElementById( "profileAvatar" ); if (profileName) { profileName.textContent = name; } if (profileEmail) { profileEmail.textContent = email; } if (nameInput) { nameInput.value = name; } if (emailInput) { emailInput.value = email; } if (avatar) { avatar.textContent = name .trim() .charAt(0) .toUpperCase() || "👤"; } } async function updateProfile(event) { event.preventDefault(); const user = getUser(); if (!user) { window.location.href = "/"; return; } const name = document .getElementById("name") .value .trim(); const newPassword = document .getElementById("newPassword") .value; if (!name) { showMessage( "لطفاً نام خود را وارد کنید.", false ); return; } if ( newPassword && newPassword.length < 6 ) { showMessage( "رمز عبور باید حداقل ۶ کاراکتر باشد.", false ); return; } const button = document.getElementById( "saveButton" ); button.disabled = true; button.textContent = "در حال ذخیره..."; try { const body = { userId: user.id, name: name }; if (newPassword) { body.password = newPassword; } const response = await fetch( "/api/profile", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } ); let data = null; try { data = await response.json(); } catch { data = null; } if ( !response.ok || !data || !data.success ) { throw new Error( data?.message || "ذخیره اطلاعات انجام نشد." ); } const updatedUser = data.user || { ...user, name: name }; localStorage.setItem( "socialboost_user", JSON.stringify( updatedUser ) ); document.getElementById( "newPassword" ).value = ""; loadProfile(); showMessage( "اطلاعات حساب با موفقیت ذخیره شد." ); } catch (error)
+ { console.error( "Profile update error:", error ); showMessage( error.message || "خطایی هنگام ذخیره اطلاعات رخ داد.", false ); }
+ finally { button.disabled = false; button.textContent = "ذخیره تغییرات"; } } document.addEventListener( "DOMContentLoaded", () => { loadProfile(); const form = document.getElementById( "profileForm" ); if (form) { form.addEventListener( "submit", updateProfile ); } } ); 
+</script>
+</body> 
+</html> 

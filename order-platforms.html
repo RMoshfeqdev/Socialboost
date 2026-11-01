@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ثبت سفارش | SocialBoost</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+.order-platforms{
+    min-height:calc(100vh - 80px);
+    padding:70px 0 100px;
+}
+
+.platform-header{
+    max-width:780px;
+    margin:0 auto 50px;
+    text-align:center;
+}
+
+.platform-badge{
+    display:inline-block;
+    padding:8px 17px;
+    border:1px solid rgba(139,92,246,.25);
+    border-radius:999px;
+    color:#a78bfa;
+    background:rgba(139,92,246,.08);
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.platform-header h1{
+    margin:0;
+    font-size:clamp(34px,6vw,58px);
+    line-height:1.35;
+}
+
+.platform-header h1 span{
+    color:#a78bfa;
+}
+
+.platform-header p{
+    margin:18px auto 0;
+    max-width:650px;
+    color:#8d91a3;
+    line-height:2;
+    font-size:14px;
+}
+
+.platform-grid{
+    max-width:1050px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.platform-card{
+    position:relative;
+    min-height:190px;
+    padding:28px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    background:rgba(255,255,255,.025);
+    color:#fff;
+    text-decoration:none;
+    overflow:hidden;
+    transition:.25s ease;
+}
+
+.platform-card:before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    top:-70px;
+    left:-60px;
+    border-radius:50%;
+    background:rgba(139,92,246,.10);
+}
+
+.platform-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(167,139,250,.4);
+    background:rgba(255,255,255,.045);
+}
+
+.platform-icon{
+    width:58px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:17px;
+    background:rgba(139,92,246,.10);
+    font-size:27px;
+    margin-bottom:20px;
+}
+
+.platform-card h2{
+    margin:0 0 8px;
+    font-size:19px;
+}
+
+.platform-card p{
+    margin:0;
+    color:#777c8e;
+    line-height:1.9;
+    font-size:11px;
+}
+
+.platform-arrow{
+    position:absolute;
+    left:25px;
+    bottom:25px;
+    color:#a78bfa;
+    font-size:20px;
+}
+
+.platform-card.all{
+    grid-column:span 3;
+    min-height:145px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.platform-card.all .platform-icon{
+    margin:0;
+    flex-shrink:0;
+}
+
+@media(max-width:800px){
+    .platform-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .platform-card.all{
+        grid-column:span 2;
+    }
+}
+
+@media(max-width:520px){
+    .order-platforms{
+        padding:50px 0 70px;
+    }
+
+    .platform-grid{
+        grid-template-columns:1fr;
+    }
+
+    .platform-card.all{
+        grid-column:span 1;
+    }
+
+    .platform-card{
+        min-height:170px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="container nav">
+
+<a class="logo" href="index.html">
+    <div class="logo-icon">
+        <span>✦</span>
+    </div>
+    <span>SocialBoost</span>
+</a>
+
+<button
+    class="menu-toggle"
+    id="menuToggle"
+    type="button"
+    aria-label="منوی سایت"
+>
+    ☰
+</button>
+
+<nav class="nav-links" id="navLinks"></nav>
+
+</div>
+
+</header>
+
+
+<main class="order-platforms">
+
+<div class="container">
+
+<section class="platform-header">
+
+<div class="platform-badge">
+    انتخاب پلتفرم
+</div>
+
+<h1>
+از کجا می‌خواهید
+<span>سفارش دهید؟</span>
+</h1>
+
+<p>
+پلتفرم موردنظر خود را انتخاب کنید تا سرویس‌های
+مخصوص همان شبکه اجتماعی برای شما نمایش داده شوند.
+</p>
+
+</section>
+
+
+<section class="platform-grid">
+
+
+<a class="platform-card"
+   href="services.html?platform=instagram">
+
+    <div class="platform-icon">📸</div>
+
+    <h2>اینستاگرام</h2>
+
+    <p>
+    فالوور، لایک، ویو، کامنت و سایر سرویس‌های Instagram
+    </p>
+
+    <div class="platform-arrow">←</div>
+
+</a>
+
+
+<a class="platform-card"
+   href="services.html?platform=telegram">
+
+    <div class="platform-icon">✈️</div>
+
+    <h2>تلگرام</h2>
+
+    <p>
+    ممبر، بازدید، ری‌اکشن و سایر سرویس‌های Telegram
+    </p>
+
+    <div class="platform-arrow">←</div>
+
+</a>
+
+
+<a class="platform-card"
+   href="services.html?platform=facebook">
+
+    <div class="platform-icon">ⓕ</div>
+
+    <h2>فیسبوک</h2>
+
+    <p>
+    لایک، فالوور، بازدید و سرویس‌های Facebook
+    </p>
+
+    <div class="platform-arrow">←</div>
+
+</a>
+
+
+<a class="platform-card"
+   href="services.html?platform=twitter">
+
+    <div class="platform-icon">𝕏</div>
+
+    <h2>توییتر / X</h2>
+
+    <p>
+    فالوور، لایک، ری‌توییت و سرویس‌های Twitter و X
+    </p>
+
+    <div class="platform-arrow">←</div>
+
+</a>
+
+
+<a class="platform-card"
+   href="services.html?platform=youtube">
+
+    <div class="platform-icon">▶️</div>
+
+    <h2>یوتیوب</h2>
+
+    <p>
+    سابسکرایب، ویو، لایک و سرویس‌های YouTube
+    </p>
+
+    <div class="platform-arrow">←</div>
+
+</a>
+
+
+<a class="platform-card"
+   href="services.html?platform=spotify">
+
+    <div class="platform-icon">🎵</div>
+
+    <h2>اسپاتیفای</h2>
+
+    <p>
+    پخش، فالوور و سایر سرویس‌های Spotify
+    </p>
+
+    <div class="platform-arrow">←</div>
+
+</a>
+
+
+<a class="platform-card all"
+   href="services.html">
+
+    <div class="platform-icon">⚡</div>
+
+    <div>
+        <h2>همه سرویس‌ها</h2>
+        <p>
+        مشاهده تمام سرویس‌های فعال Provider و انتخاب سرویس دلخواه
+        </p>
+    </div>
+
+    <div class="platform-arrow">←</div>
+
+</a>
+
+
+</section>
+
+</div>
+
+</main>
+
+
+<script src="/script.js"></script>
+<script src="/menu.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1093 @@
+<script src="/menu.js"></script>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="داشبورد کاربری SocialBoost">
+    <meta name="theme-color" content="#080812">
+
+    <title>داشبورد | SocialBoost</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .dashboard-page {
+            min-height: calc(100vh - 78px);
+            padding: 45px 0 80px;
+        }
+
+        .dashboard-heading {
+            margin-bottom: 30px;
+        }
+
+        .dashboard-heading h1 {
+            font-size: clamp(28px, 5vw, 42px);
+        }
+
+        .dashboard-heading h1 span {
+            color: #a78bfa;
+        }
+
+        .dashboard-heading p {
+            margin-top: 10px;
+            color: #777b8d;
+            font-size: 10px;
+            line-height: 2;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-stat {
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .025);
+        }
+
+        .dashboard-stat-icon {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            background: rgba(139, 92, 246, .1);
+            font-size: 17px;
+        }
+
+        .dashboard-stat span {
+            display: block;
+            color: #777b8d;
+            font-size: 8px;
+        }
+
+        .dashboard-stat strong {
+            display: block;
+            margin-top: 6px;
+            color: #eee;
+            font-size: 19px;
+        }
+
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            padding: 22px;
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, .025);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .card-header h2 {
+            color: #eee;
+            font-size: 15px;
+        }
+
+        .card-header a {
+            color: #a78bfa;
+            font-size: 8px;
+            text-decoration: none;
+        }
+
+        .orders-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .order-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, .05);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .018);
+        }
+
+        .order-main {
+            min-width: 0;
+        }
+
+        .order-main strong {
+            display: block;
+            color: #ddd;
+            font-size: 9px;
+        }
+
+        .order-main span {
+            display: block;
+            margin-top: 5px;
+            color: #666b7b;
+            font-size: 7px;
+        }
+
+        .order-price {
+            color: #c4b5fd;
+            font-size: 9px;
+            white-space: nowrap;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 7px;
+            padding: 5px 8px;
+            border-radius: 999px;
+            color: #fcd34d;
+            background: rgba(250, 204, 21, .07);
+            font-size: 7px;
+        }
+
+        .status.completed {
+            color: #86efac;
+            background: rgba(74, 222, 128, .07);
+        }
+
+        .status.cancelled {
+            color: #fca5a5;
+            background: rgba(248, 113, 113, .07);
+        }
+
+        .wallet-box {
+            text-align: center;
+            padding: 25px 15px;
+            border-radius: 15px;
+            background: linear-gradient(
+                135deg,
+                rgba(139, 92, 246, .14),
+                rgba(79, 70, 229, .05)
+            );
+        }
+
+        .wallet-box span {
+            color: #85899a;
+            font-size: 8px;
+        }
+
+        .wallet-box strong {
+            display: block;
+            margin: 10px 0 18px;
+            color: #fff;
+            font-size: 27px;
+        }
+
+        .wallet-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .wallet-buttons a {
+            flex: 1;
+            padding: 10px;
+            border-radius: 9px;
+            color: #fff;
+            background: #7c3aed;
+            font-size: 8px;
+            text-decoration: none;
+        }
+
+        .wallet-buttons a.secondary {
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quick-action {
+            display: block;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 12px;
+            color: #ddd;
+            background: rgba(255, 255, 255, .02);
+            text-decoration: none;
+            transition: .2s ease;
+        }
+
+        .quick-action:hover {
+            border-color: rgba(139, 92, 246, .35);
+            transform: translateY(-2px);
+        }
+
+        .quick-action-icon {
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .quick-action strong {
+            display: block;
+            font-size: 8px;
+        }
+
+        .quick-action span {
+            display: block;
+            margin-top: 4px;
+            color: #686c7b;
+            font-size: 7px;
+        }
+
+        .empty-state {
+            padding: 30px 10px;
+            color: #686c7b;
+            text-align: center;
+            font-size: 8px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .dashboard-page {
+                padding-top: 30px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 9px;
+            }
+
+            .dashboard-stat {
+                padding: 15px;
+            }
+
+            .dashboard-stat strong {
+                font-size: 16px;
+            }
+
+            .dashboard-layout {
+                gap: 12px;
+            }
+
+            .order-item {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container nav">
+
+            <a href="/" class="logo">
+                Social<span>Boost</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="منوی سایت"
+            >
+                ☰
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="/index.html">خانه</a>
+                <a href="/services.html">ثبت سفارش</a>
+		<a href="/our-services.html">خدمات</a>
+                <a href="/profile.html">پروفایل</a>
+                <a href="/wallet.html">کیف پول</a>
+                <a href="/transactions.html">تراکنش‌ها</a>
+                <a href="/support.html">پشتیبانی</a>
+            </nav>
+
+            <div class="auth-buttons">
+                <button
+                    class="register-button"
+                    type="button"
+                    onclick="goProfile()"
+                >
+                    پروفایل
+                </button>
+
+                <button
+                    class="login-button"
+                    type="button"
+                    onclick="logoutUser()"
+                >
+                    خروج
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="dashboard-page">
+
+        <div class="container">
+
+            <section class="dashboard-heading">
+
+                <span class="eyebrow">
+                    پنل کاربری
+                </span>
+
+                <h1>
+                    سلام،
+                    <span id="userName">کاربر</span>
+                    👋
+                </h1>
+
+                <p>
+                    از اینجا می‌توانید سفارش‌ها، موجودی کیف پول و حساب خود را مدیریت کنید.
+                </p>
+
+            </section>
+
+
+            <section class="dashboard-grid">
+
+                <div class="dashboard-stat">
+
+                    <div class="dashboard-stat-icon">
+                        🛒
+                    </div>
+
+                    <span>
+                        کل سفارش‌ها
+                    </span>
+
+                    <strong id="totalOrders">
+                        ۰
+                    </strong>
+
+                </div>
+
+
+                <div class="dashboard-stat">
+
+                    <div class="dashboard-stat-icon">
+                        ⏳
+                    </div>
+
+                    <span>
+                        سفارش‌های در انتظار
+                    </span>
+
+                    <strong id="pendingOrders">
+                        ۰
+                    </strong>
+
+                </div>
+
+
+                <div class="dashboard-stat">
+
+                    <div class="dashboard-stat-icon">
+                        ✅
+                    </div>
+
+                    <span>
+                        سفارش‌های تکمیل‌شده
+                    </span>
+
+                    <strong id="completedOrders">
+                        ۰
+                    </strong>
+
+                </div>
+
+
+                <div class="dashboard-stat">
+
+                    <div class="dashboard-stat-icon">
+                        💰
+                    </div>
+
+                    <span>
+                        موجودی کیف پول
+                    </span>
+
+                    <strong id="walletBalance">
+                        ۰ تومان
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <div class="dashboard-layout">
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            آخرین سفارش‌ها
+                        </h2>
+
+                        <a href="/orders.html">
+                            مشاهده همه
+                        </a>
+
+                    </div>
+
+                    <div class="orders-list" id="recentOrders">
+
+                        <div class="empty-state">
+                            در حال دریافت سفارش‌ها...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            کیف پول
+                        </h2>
+
+                        <a href="/wallet.html">
+                            مدیریت کیف پول
+                        </a>
+
+                    </div>
+
+
+                    <div class="wallet-box">
+
+                        <span>
+                            موجودی فعلی
+                        </span>
+
+                        <strong id="walletBalanceLarge">
+                            ۰ تومان
+                        </strong>
+
+                        <div class="wallet-buttons">
+
+                            <a href="/wallet.html">
+                                شارژ کیف پول
+                            </a>
+
+                            <a
+                                href="/transactions.html"
+                                class="secondary"
+                            >
+                                تراکنش‌ها
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <a
+                            class="quick-action"
+                            href="/services.html"
+                        >
+                            <div class="quick-action-icon">
+                                🚀
+                            </div>
+
+                            <strong>
+                                سفارش جدید
+                            </strong>
+
+                            <span>
+                                انتخاب سرویس
+                            </span>
+                        </a>
+
+
+                        <a
+                            class="quick-action"
+                            href="/profile.html"
+                        >
+                            <div class="quick-action-icon">
+                                👤
+                            </div>
+
+                            <strong>
+                                پروفایل
+                            </strong>
+
+                            <span>
+                                مدیریت حساب
+                            </span>
+                        </a>
+
+
+                        <a
+                            class="quick-action"
+                            href="/support.html"
+                        >
+                            <div class="quick-action-icon">
+                                🎧
+                            </div>
+
+                            <strong>
+                                پشتیبانی
+                            </strong>
+
+                            <span>
+                                ارسال تیکت
+                            </span>
+                        </a>
+
+
+                        <a
+                            class="quick-action"
+                            href="/orders.html"
+                        >
+                            <div class="quick-action-icon">
+                                📦
+                            </div>
+
+                            <strong>
+                                سفارش‌ها
+                            </strong>
+
+                            <span>
+                                پیگیری سفارش
+                            </span>
+                        </a>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <div
+        id="notification"
+        class="notification"
+        role="alert"
+    ></div>
+
+
+    <script>
+
+        function getUser() {
+            try {
+
+                const raw = localStorage.getItem(
+                    "socialboost_user"
+                );
+
+                if (!raw) {
+                    return null;
+                }
+
+                return JSON.parse(raw);
+
+            } catch (error) {
+                return null;
+            }
+        }
+
+
+        function logoutUser() {
+
+            if (
+                !confirm(
+                    "آیا می‌خواهید از حساب خود خارج شوید؟"
+                )
+            ) {
+                return;
+            }
+
+            localStorage.removeItem(
+                "socialboost_user"
+            );
+
+            window.location.href = "/";
+        }
+
+
+        function goProfile() {
+            window.location.href = "/profile.html";
+        }
+
+
+        function formatMoney(value) {
+
+            const amount = Number(value) || 0;
+
+            return (
+                amount.toLocaleString("fa-IR") +
+                " تومان"
+            );
+        }
+
+
+        function formatDate(value) {
+
+            if (!value) {
+                return "-";
+            }
+
+            const date = new Date(value);
+
+            if (Number.isNaN(date.getTime())) {
+                return String(value);
+            }
+
+            return date.toLocaleString(
+                "fa-IR",
+                {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        function normalizeStatus(status) {
+
+            return String(status || "")
+                .toLowerCase()
+                .trim();
+        }
+
+
+        function statusText(status) {
+
+            const value = normalizeStatus(status);
+
+            if (
+                value === "completed" ||
+                value === "complete" ||
+                value === "done" ||
+                value === "تکمیل"
+            ) {
+                return "تکمیل شده";
+            }
+
+            if (
+                value === "cancelled" ||
+                value === "canceled" ||
+                value === "failed"
+            ) {
+                return "لغو شده";
+            }
+
+            if (
+                value === "processing" ||
+                value === "running"
+            ) {
+                return "در حال انجام";
+            }
+
+            return "در انتظار";
+        }
+
+
+        function statusClass(status) {
+
+            const value = normalizeStatus(status);
+
+            if (
+                value === "completed" ||
+                value === "complete" ||
+                value === "done" ||
+                value === "تکمیل"
+            ) {
+                return "completed";
+            }
+
+            if (
+                value === "cancelled" ||
+                value === "canceled" ||
+                value === "failed"
+            ) {
+                return "cancelled";
+            }
+
+            return "";
+        }
+
+
+        async function loadDashboard() {
+
+            const user = getUser();
+
+            if (!user) {
+                window.location.href = "/";
+                return;
+            }
+
+
+            const nameElement =
+                document.getElementById("userName");
+
+            if (nameElement) {
+                nameElement.textContent =
+                    user.name || "کاربر";
+            }
+
+
+            try {
+
+                const response =
+                    await fetch("/api/orders");
+
+                if (!response.ok) {
+                    throw new Error(
+                        "خطا در دریافت سفارش‌ها"
+                    );
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+                    throw new Error(
+                        data.message ||
+                        "دریافت سفارش‌ها ناموفق بود."
+                    );
+                }
+
+
+                let orders =
+                    Array.isArray(data.orders)
+                        ? data.orders
+                        : [];
+
+
+                orders = orders.filter(order => {
+
+                    return String(
+                        order.user_id ??
+                        order.userId ??
+                        ""
+                    ) === String(user.id);
+
+                });
+
+
+                updateStatistics(orders);
+                renderRecentOrders(orders);
+
+            } catch (error) {
+
+                console.error(error);
+
+                document
+                    .getElementById("recentOrders")
+                    .innerHTML = `
+                        <div class="empty-state">
+                            امکان دریافت سفارش‌ها وجود ندارد.
+                        </div>
+                    `;
+            }
+
+
+            loadWallet();
+        }
+
+
+        function updateStatistics(orders) {
+
+            const total = orders.length;
+
+
+            const pending =
+                orders.filter(order => {
+
+                    const status =
+                        normalizeStatus(order.status);
+
+                    return ![
+                        "completed",
+                        "complete",
+                        "done",
+                        "cancelled",
+                        "canceled",
+                        "failed",
+                        "تکمیل"
+                    ].includes(status);
+
+                }).length;
+
+
+            const completed =
+                orders.filter(order => {
+
+                    const status =
+                        normalizeStatus(order.status);
+
+                    return [
+                        "completed",
+                        "complete",
+                        "done",
+                        "تکمیل"
+                    ].includes(status);
+
+                }).length;
+
+
+            document
+                .getElementById("totalOrders")
+                .textContent =
+                total.toLocaleString("fa-IR");
+
+
+            document
+                .getElementById("pendingOrders")
+                .textContent =
+                pending.toLocaleString("fa-IR");
+
+
+            document
+                .getElementById("completedOrders")
+                .textContent =
+                completed.toLocaleString("fa-IR");
+        }
+
+
+        function renderRecentOrders(orders) {
+
+            const container =
+                document.getElementById("recentOrders");
+
+
+            if (!orders.length) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        هنوز سفارشی ثبت نکرده‌اید.
+
+                        <br><br>
+
+                        <a
+                            href="/services.html"
+                            style="color:#a78bfa;"
+                        >
+                            ثبت اولین سفارش
+                        </a>
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            const recent =
+                orders
+                    .slice()
+                    .sort((a, b) => {
+
+                        return (
+                            Number(b.id || 0) -
+                            Number(a.id || 0)
+                        );
+
+                    })
+                    .slice(0, 5);
+
+
+            container.innerHTML =
+                recent
+                    .map(order => {
+
+                        const service =
+                            order.service || "سرویس";
+
+                        const quantity =
+                            Number(order.quantity) || 0;
+
+                        const price =
+                            Number(order.price) || 0;
+
+
+                        return `
+                            <div class="order-item">
+
+                                <div class="order-main">
+
+                                    <strong>
+                                        ${escapeHTML(service)}
+                                        ·
+                                        ${quantity.toLocaleString("fa-IR")}
+                                    </strong>
+
+                                    <span>
+                                        سفارش #${escapeHTML(order.id ?? "-")}
+                                        ·
+                                        ${escapeHTML(
+                                            formatDate(
+                                                order.created_at ||
+                                                order.createdAt
+                                            )
+                                        )}
+                                    </span>
+
+                                    <span
+                                        class="status ${statusClass(order.status)}"
+                                    >
+                                        ${statusText(order.status)}
+                                    </span>
+
+                                </div>
+
+                                <div class="order-price">
+                                    ${formatMoney(price)}
+                                </div>
+
+                            </div>
+                        `;
+
+                    })
+                    .join("");
+        }
+
+
+        async function loadWallet() {
+
+            const user = getUser();
+
+            if (!user) {
+                return;
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/wallet?userId=" +
+                        encodeURIComponent(user.id)
+                    );
+
+
+                if (!response.ok) {
+                    throw new Error(
+                        "Wallet API unavailable"
+                    );
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+                    throw new Error(
+                        data.message ||
+                        "Wallet error"
+                    );
+                }
+
+
+                const balance =
+                    Number(
+                        data.balance ??
+                        data.wallet?.balance ??
+                        0
+                    );
+
+
+                document
+                    .getElementById("walletBalance")
+                    .textContent =
+                    formatMoney(balance);
+
+
+                document
+                    .getElementById("walletBalanceLarge")
+                    .textContent =
+                    formatMoney(balance);
+
+            } catch (error) {
+
+                console.warn(
+                    "Wallet:",
+                    error.message
+                );
+
+
+                document
+                    .getElementById("walletBalance")
+                    .textContent =
+                    "۰ تومان";
+
+
+                document
+                    .getElementById("walletBalanceLarge")
+                    .textContent =
+                    "۰ تومان";
+            }
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const user = getUser();
+
+                if (!user) {
+                    window.location.href = "/";
+                    return;
+                }
+
+                loadDashboard();
+            }
+        );
+
+    </script>
+
+</body>
+</html>
